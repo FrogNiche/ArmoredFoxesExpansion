@@ -1,0 +1,16 @@
+{
+  "_comment": "Items",
+  "item.nichesmobs.sp_spawn_egg": "Spectacular Paws Spawn Egg",
+  "item.nichesmobs.wolfie_spawn_egg": "Wolfie the Elite Commander Spawn Egg",
+  "item.nichesmobs.furry_spawn_egg": "Furry the Supreme General Spawn Egg",
+  "item.nichesmobs.ud_spawn_egg": "Undead-Wolf Spawn Egg",
+  "item.nichesmobs.snow_mole_spawn_egg": "Snow Mole Spawn Egg",
+  "itemGroup.nichestab": "Niche's Mobs",
+
+  "_comment": "Entities",
+  "entity.nichesmobs.snow_mole": "Snow Mole",
+  "entity.nichesmobs.sp": "Spectacular Paws",
+  "entity.nichesmobs.wolfie": "Wolfie the Elite Commander",
+  "entity.nichesmobs.furry": "Furry the Supreme General",
+  "entity.nichesmobs.ud": "Undead-Wolf"
+}

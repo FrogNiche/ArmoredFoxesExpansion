@@ -1,0 +1,221 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.furry.walk": {
+			"loop": true,
+			"animation_length": 1,
+			"bones": {
+				"sp": {
+					"position": {
+						"vector": [0, 0, 1]
+					}
+				},
+				"left_leg": {
+					"rotation": {
+						"0.0": {
+							"vector": [-37.5, 0, 0]
+						},
+						"0.5": {
+							"vector": [37.5, 0, 0]
+						},
+						"1.0": {
+							"vector": [-37.5, 0, 0]
+						}
+					}
+				},
+				"foot": {
+					"rotation": {
+						"vector": [15, 0, 0]
+					}
+				},
+				"right_leg": {
+					"rotation": {
+						"0.0": {
+							"vector": [25, 0, 0]
+						},
+						"0.5": {
+							"vector": [-52.5, 0, 0]
+						},
+						"1.0": {
+							"vector": [25, 0, 0]
+						}
+					}
+				},
+				"rightfoot": {
+					"rotation": {
+						"0.0": {
+							"vector": [17.5, 0, 0]
+						},
+						"1.0": {
+							"vector": [17.5, 0, 0]
+						}
+					}
+				},
+				"left_upper_arm": {
+					"rotation": {
+						"0.0": {
+							"vector": [10, 0, 0]
+						},
+						"0.5": {
+							"vector": [-32.5, 0, 0]
+						},
+						"1.0": {
+							"vector": [10, 0, 0]
+						}
+					}
+				},
+				"left_hand": {
+					"rotation": {
+						"0.0": {
+							"vector": [-15, 0, 0]
+						},
+						"1.0": {
+							"vector": [-15, 0, 0]
+						}
+					}
+				},
+				"right_upper_hand": {
+					"rotation": {
+						"0.0": {
+							"vector": [-27.5, 0, 0]
+						},
+						"0.5": {
+							"vector": [32.5, 0, 0]
+						},
+						"1.0": {
+							"vector": [-27.5, 0, 0]
+						}
+					}
+				},
+				"right_hand2": {
+					"rotation": {
+						"0.0": {
+							"vector": [-5, 0, 0]
+						},
+						"1.0": {
+							"vector": [-5, 0, 0]
+						}
+					}
+				},
+				"face": {
+					"rotation": {
+						"0.0": {
+							"vector": [-2.5, 0, 0]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [-2.5, 0, 0]
+						}
+					}
+				},
+				"Mace": {
+					"rotation": {
+						"0.0": {
+							"vector": [25, 0, 0]
+						},
+						"0.5": {
+							"vector": [7.5, 0, 0]
+						},
+						"1.0": {
+							"vector": [25, 0, 0]
+						}
+					}
+				}
+			}
+		},
+		"animation.furry.idle": {
+			"loop": true,
+			"animation_length": 1,
+			"bones": {
+				"body": {
+					"scale": {
+						"0.0": {
+							"vector": [1.1, 1.1, 1]
+						},
+						"0.5": {
+							"vector": [1, 1, 1]
+						},
+						"1.0": {
+							"vector": [1.1, 1.1, 1]
+						}
+					}
+				},
+				"left_upper_arm": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, -2.5]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, 0, -2.5]
+						}
+					}
+				},
+				"right_upper_hand": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 2.5]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, 0, 2.5]
+						}
+					}
+				},
+				"face": {
+					"rotation": {
+						"0.0": {
+							"vector": [-2.5, 0, 0]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [-2.5, 0, 0]
+						}
+					}
+				}
+			}
+		},
+		"animation.furry.attack": {
+			"animation_length": 1.5,
+			"bones": {
+				"right_upper_hand": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [-40, 0, 0]
+						},
+						"1.5": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"right_hand2": {
+					"rotation": {
+						"1.0": {
+							"vector": [-5, 0, 0]
+						},
+						"1.5": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"Mace": {
+					"rotation": {
+						"vector": [20, 0, 0]
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

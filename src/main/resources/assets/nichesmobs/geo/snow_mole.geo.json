@@ -1,0 +1,75 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.snow_mole",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "snow_mole",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "face",
+					"parent": "snow_mole",
+					"pivot": [0, 2.075, 0.75],
+					"cubes": [
+						{"origin": [-3, 0.075, -2.75], "size": [6, 4, 7], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "nose",
+					"parent": "face",
+					"pivot": [0, 1.025, -3.95],
+					"cubes": [
+						{"origin": [-1.5, 1.325, -4.75], "size": [3, 1, 2], "uv": [15, 11]},
+						{"origin": [0.5, 0.325, -4.75], "size": [1, 1, 1], "uv": [0, 2]},
+						{"origin": [-1.5, 0.325, -3.75], "size": [3, 1, 1], "uv": [0, 19]},
+						{"origin": [-0.5, 0.325, -4.75], "size": [1, 1, 1], "uv": [3, 1]},
+						{"origin": [-1.5, 0.325, -4.75], "size": [1, 1, 1], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "left_hand_whisker",
+					"parent": "snow_mole",
+					"pivot": [3.49049, 2.51816, -2.44889],
+					"cubes": [
+						{"origin": [2.99049, 0.01816, -2.44889], "size": [5, 5, 0], "uv": [10, 14]},
+						{"origin": [2.99049, 0.01816, -2.44889], "size": [5, 5, 0], "uv": [10, 14]}
+					]
+				},
+				{
+					"name": "right_hand_whisker",
+					"parent": "snow_mole",
+					"pivot": [-3.49239, 2.55789, -2.48826],
+					"cubes": [
+						{"origin": [-7.99239, 0.05789, -2.48826], "size": [5, 5, 0], "uv": [0, 14]},
+						{"origin": [-7.99239, 0.05789, -2.48826], "size": [5, 5, 0], "uv": [0, 14]}
+					]
+				},
+				{
+					"name": "left_foot",
+					"parent": "snow_mole",
+					"pivot": [3.5, 0.075, 2.75],
+					"cubes": [
+						{"origin": [3, 0.075, 1.25], "size": [3, 0, 3], "uv": [6, 11]}
+					]
+				},
+				{
+					"name": "right_foot",
+					"parent": "snow_mole",
+					"pivot": [-3.5, 0.075, 2.75],
+					"cubes": [
+						{"origin": [-6, 0.075, 1.25], "size": [3, 0, 3], "uv": [0, 11]}
+					]
+				}
+			]
+		}
+	]
+}

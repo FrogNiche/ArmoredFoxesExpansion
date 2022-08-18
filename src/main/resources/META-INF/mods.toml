@@ -1,0 +1,33 @@
+modLoader="javafml" #mandatory
+loaderVersion="[41,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+license="All rights reserved"
+[[mods]]
+modId="nichesmobs" #mandatory
+version="${file.jarVersion}" #mandatory
+displayName="Niche's Mobs" #mandatory
+logoFile="banner.png" #optional
+credits="Thanks for this example mod goes to Java" #optional
+authors="Frog Niche" #optional
+description='''
+Niche's Mobs adds a few fictional  mobs to the game
+Our discord server link : https://discord.gg/vJ7jMkgT
+'''
+[[dependencies.nichesmobs]] #optional
+    # the modid of the dependency
+    modId="forge" #mandatory
+    # Does this dependency have to exist - if not, ordering below must be specified
+    mandatory=true #mandatory
+    # The version range of the dependency
+    versionRange="[41,)" #mandatory
+    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+    ordering="NONE"
+    # Side this dependency is applied on - BOTH, CLIENT or SERVER
+    side="BOTH"
+# Here's another dependency
+[[dependencies.nichesmobs]]
+    modId="minecraft"
+    mandatory=true
+# This version range declares a minimum of the current minecraft version up to but not including the next major version
+    versionRange="[1.19,1.20)"
+    ordering="NONE"
+    side="BOTH"
