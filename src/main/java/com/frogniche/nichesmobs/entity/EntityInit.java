@@ -5,6 +5,7 @@ import com.frogniche.nichesmobs.entity.furry.FurryEntity;
 import com.frogniche.nichesmobs.entity.snow_mole.EntitySnowMole;
 import com.frogniche.nichesmobs.entity.sp.SPEntity;
 import com.frogniche.nichesmobs.entity.ud.UDEntity;
+import com.frogniche.nichesmobs.entity.undead_executioner.Undead_ExecutionerEntity;
 import com.frogniche.nichesmobs.entity.wolfie.WolfieEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -26,6 +27,9 @@ public class EntityInit {
             EntityType.Builder.<SPEntity>of(SPEntity::new,  MobCategory.MONSTER));
     public static final RegistryObject<EntityType<WolfieEntity>> WOLFIE = register("wolfie",
             EntityType.Builder.<WolfieEntity>of(WolfieEntity::new,  MobCategory.MONSTER));
+
+    public static final RegistryObject<EntityType<Undead_ExecutionerEntity>> UNDEAD_EXECUTIONER = register("undead_executioner",
+            EntityType.Builder.<Undead_ExecutionerEntity>of(Undead_ExecutionerEntity::new,  MobCategory.MONSTER));
 
     public static final RegistryObject<EntityType<UDEntity>> UD = register("ud",
             EntityType.Builder.<UDEntity>of(UDEntity::new,  MobCategory.MONSTER));

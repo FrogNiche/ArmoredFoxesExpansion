@@ -36,8 +36,11 @@ public class SPEntity extends Monster implements IAnimatable {
     // is it okay?
     protected ServerBossEvent bossBar = (ServerBossEvent) new ServerBossEvent(this.getDisplayName(),
 
-            BossEvent.BossBarColor.YELLOW, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
+            BossEvent.BossBarColor.YELLOW, BossEvent.BossBarOverlay.PROGRESS);
+    {
 
+        bossBar.setProgress(this.getHealth() / this.getMaxHealth());
+    }
 
     public static final AttributeSupplier createAttributes(){
         return Monster.createMonsterAttributes()
@@ -83,10 +86,6 @@ public class SPEntity extends Monster implements IAnimatable {
         });
     }
 
-    {
-
-        bossBar.setProgress(this.getHealth() / this.getMaxHealth());
-    }
 
 
     @Override
@@ -163,13 +162,13 @@ public class SPEntity extends Monster implements IAnimatable {
     }
 
     @Override
-    public void stopSeenByPlayer(ServerPlayer p31488) {
-        super.stopSeenByPlayer(p31488);
-        this.bossBar.removePlayer(p31488);
+    public void stopSeenByPlayer(ServerPlayer stopSeenByPlayer) {
+        super.stopSeenByPlayer(stopSeenByPlayer);
+        this.bossBar.removePlayer(stopSeenByPlayer);
     }
 
-    public void setCustomName(@Nullable Component p31476) {
-        super.setCustomName(p31476);
+    public void setCustomName(@Nullable Component customName) {
+        super.setCustomName(customName);
         this.bossBar.setName(this.getDisplayName());
     }
 }

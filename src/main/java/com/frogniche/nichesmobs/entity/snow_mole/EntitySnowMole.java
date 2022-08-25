@@ -1,5 +1,8 @@
 package com.frogniche.nichesmobs.entity.snow_mole;
 import com.frogniche.nichesmobs.entity.EntityInit;
+import com.frogniche.nichesmobs.entity.furry.FurryEntity;
+import com.frogniche.nichesmobs.entity.sp.SPEntity;
+import com.frogniche.nichesmobs.entity.wolfie.WolfieEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -15,6 +18,8 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.animal.Cat;
+import net.minecraft.world.entity.animal.Ocelot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -57,12 +62,19 @@ public class EntitySnowMole extends Animal implements IAnimatable {
         this.goalSelector.addGoal(0, new DigDownGoal());
         this.goalSelector.addGoal(0, new DigUpGoal());
         this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, Player.class,
+
                 16f, 1.6f, 1.4f){
             @Override
             public boolean canUse() {
                 return !isInSnow() && super.canUse();
             }
         });
+        this.goalSelector.addGoal(3, new AvoidEntityGoal<>(this, SPEntity.class,
+                6.0F, 1.0D, 1.2D));
+        this.goalSelector.addGoal(3, new AvoidEntityGoal<>(this, WolfieEntity.class,
+                6.0F, 1.0D, 1.2D));
+        this.goalSelector.addGoal(3, new AvoidEntityGoal<>(this, FurryEntity.class,
+                6.0F, 1.0D, 1.2D));
         this.goalSelector.addGoal(2, new BreedGoal(this, 0.7f){
             @Override
             public boolean canUse() {
@@ -136,7 +148,7 @@ public class EntitySnowMole extends Animal implements IAnimatable {
         if (this.isInSnow() != inSnow){
             if (inSnow){
                 GeckoLibUtil.getControllerForID(this.factory, getId(), CONTROLLER_NAME).setAnimation(new
-                        AnimationBuilder().addAnimation("animation.snow_mole.dig", true));
+                        AnimationBuilder().addAnimation("animation.snow_mole.dig", false));
             }
         }
         this.entityData.set(IN_SNOW, inSnow);

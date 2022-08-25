@@ -1,4 +1,5 @@
 package com.frogniche.nichesmobs;
+import com.frogniche.nichesmobs.effect.ModEffects;
 import com.frogniche.nichesmobs.entity.EntityInit;
 import com.frogniche.nichesmobs.entity.furry.FurryRenderer;
 import com.frogniche.nichesmobs.entity.snow_mole.EntitySnowMole;
@@ -7,6 +8,8 @@ import com.frogniche.nichesmobs.entity.sp.SPEntity;
 import com.frogniche.nichesmobs.entity.sp.SPRenderer;
 import com.frogniche.nichesmobs.entity.ud.UDEntity;
 import com.frogniche.nichesmobs.entity.ud.UDRenderer;
+import com.frogniche.nichesmobs.entity.undead_executioner.Undead_ExecutionerEntity;
+import com.frogniche.nichesmobs.entity.undead_executioner.Undead_ExecutionerRenderer;
 import com.frogniche.nichesmobs.entity.wolfie.WolfieEntity;
 import com.frogniche.nichesmobs.entity.wolfie.WolfieRenderer;
 import com.frogniche.nichesmobs.item.ItemInit;
@@ -40,6 +43,7 @@ public class NichesMobs
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         // Add to the constructor
         ItemInit.register(modEventBus);
+        ModEffects.register(modEventBus);
         EntityInit.ENTITIES.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::registerEntityAttributes);
@@ -60,6 +64,7 @@ public class NichesMobs
         EntityRenderers.register(EntityInit.WOLFIE.get(), WolfieRenderer::new);
         EntityRenderers.register(EntityInit.SNOW_MOLE.get(), SnowMoleRenderer::new);
         EntityRenderers.register(EntityInit.UD.get(), UDRenderer::new);
+        EntityRenderers.register(EntityInit.UNDEAD_EXECUTIONER.get(), Undead_ExecutionerRenderer::new);
     }
     private void registerEntityAttributes(EntityAttributeCreationEvent event){
         event.put(EntityInit.SNOW_MOLE.get(), EntitySnowMole.createAttributes().build());
@@ -67,6 +72,7 @@ public class NichesMobs
         event.put(EntityInit.FURRY.get(), SPEntity.createAttributes());
         event.put(EntityInit.WOLFIE.get(), WolfieEntity.createAttributes());
         event.put(EntityInit.UD.get(), UDEntity.createAttributes());
+        event.put(EntityInit.UNDEAD_EXECUTIONER.get(), Undead_ExecutionerEntity.createAttributes());
     }
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class ClientModEvents

@@ -30,9 +30,9 @@ public class FurryEntity extends Monster implements IAnimatable {
 
     public static final AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 60)
+                .add(Attributes.MAX_HEALTH, 20)
                 .add(Attributes.MOVEMENT_SPEED, 0.25d)
-                .add(Attributes.ATTACK_DAMAGE, 20)
+                .add(Attributes.ATTACK_DAMAGE, 9)
                 .add(Attributes.ARMOR, 21)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 2).build();
 

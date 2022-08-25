@@ -1,4 +1,4 @@
-package com.frogniche.nichesmobs.entity.ud;
+package com.frogniche.nichesmobs.entity.undead_executioner;
 
 import com.frogniche.nichesmobs.entity.EntityInit;
 import net.minecraft.core.BlockPos;
@@ -27,13 +27,13 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
-public class UDEntity extends Monster implements IAnimatable {
+public class Undead_ExecutionerEntity extends Monster implements IAnimatable {
 
     public static final AttributeSupplier createAttributes(){
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 20)
+                .add(Attributes.MAX_HEALTH, 31)
                 .add(Attributes.MOVEMENT_SPEED, 0.25d)
-                .add(Attributes.ATTACK_DAMAGE, 10)
+                .add(Attributes.ATTACK_DAMAGE, 18)
                 .add(Attributes.ARMOR, 21)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 2).build();
 
@@ -43,12 +43,12 @@ public class UDEntity extends Monster implements IAnimatable {
 
     private AnimationFactory factory = new AnimationFactory(this);
 
-    public UDEntity(EntityType<UDEntity> type, Level world){
+    public Undead_ExecutionerEntity(EntityType<Undead_ExecutionerEntity> type, Level world){
         super(type, world);
     }
 
-    protected UDEntity(Level world){
-        this(EntityInit.UD.get(), world);
+    protected Undead_ExecutionerEntity(Level world){
+        this(EntityInit.UNDEAD_EXECUTIONER.get(), world);
     }
 
     @Override
@@ -87,8 +87,8 @@ public class UDEntity extends Monster implements IAnimatable {
     @Override
     public void handleEntityEvent(byte id) {
         if(id == 10){
-            AnimationController<UDEntity> controller = GeckoLibUtil.getControllerForID(this.factory, this.getId(), CONTROLLER_NAME);
-            controller.setAnimation(new AnimationBuilder().addAnimation("animation.ud.attack"));
+            AnimationController<Undead_ExecutionerEntity> controller = GeckoLibUtil.getControllerForID(this.factory, this.getId(), CONTROLLER_NAME);
+            controller.setAnimation(new AnimationBuilder().addAnimation("animation.undead_executioner.attack"));
         }else
             super.handleEntityEvent(id);
     }
@@ -96,16 +96,16 @@ public class UDEntity extends Monster implements IAnimatable {
 
     private PlayState predicate(AnimationEvent event){
         if(event.getController().getCurrentAnimation() != null && event.getController().
-                getCurrentAnimation().animationName.equals("animation.ud.attack"))
+                getCurrentAnimation().animationName.equals("animation.undead_executioner.attack"))
             return PlayState.CONTINUE;
 
         if (event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation
-                    ("animation.ud.walk", true));
+                    ("animation.undead_executioner.walk", true));
             return PlayState.CONTINUE;
         }
         event.getController().setAnimation(new AnimationBuilder().addAnimation
-                ("animation.ud.idle", true));
+                ("animation.undead_executioner.idle", true));
         return PlayState.CONTINUE;
 
     }

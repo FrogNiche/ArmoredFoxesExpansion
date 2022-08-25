@@ -1,4 +1,5 @@
 package com.frogniche.nichesmobs.entity.wolfie;
+import com.frogniche.nichesmobs.effect.ModEffects;
 import com.frogniche.nichesmobs.entity.EntityInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -9,8 +10,11 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
@@ -18,6 +22,7 @@ import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.animal.Pufferfish;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Skeleton;
@@ -38,11 +43,11 @@ public class WolfieEntity extends Monster implements IAnimatable {
 
     public static final AttributeSupplier createAttributes(){
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 300)
+                .add(Attributes.MAX_HEALTH, 20)
                 .add(Attributes.MOVEMENT_SPEED, 0.25d)
-                .add(Attributes.ATTACK_DAMAGE, 20)
-                .add(Attributes.ARMOR, 21)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 2).build();
+                .add(Attributes.ATTACK_DAMAGE, 9)
+                .add(Attributes.ARMOR, 23)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 4).build();
 
     }
     public static final String CONTROLLER_NAME = "controller";
@@ -70,8 +75,11 @@ public class WolfieEntity extends Monster implements IAnimatable {
         this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, Monster.class, true){
 
         });
+        this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, Pufferfish.class, true){
+        });
         this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, IronGolem.class, true){
         });
+
         this.goalSelector.addGoal(4, new LookAtPlayerGoal(this,Player.class, 8f){
 
         });
@@ -87,8 +95,12 @@ public class WolfieEntity extends Monster implements IAnimatable {
         if(super.doHurtTarget(opfer)){
             this.level.broadcastEntityEvent(this, (byte)10);
             return true;
+        } else {
+            if (opfer instanceof LivingEntity) {
+                ((LivingEntity)opfer).addEffect(new MobEffectInstance(ModEffects.FREEZE.get(), 200), this);
+            }
         }
-        return false;
+        return true;
     }
 
     @Override
