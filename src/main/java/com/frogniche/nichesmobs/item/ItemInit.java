@@ -2,12 +2,12 @@ package com.frogniche.nichesmobs.item;
 
 import com.frogniche.nichesmobs.NichesMobs;
 import com.frogniche.nichesmobs.entity.EntityInit;
+import com.frogniche.nichesmobs.item.custom.Furious_GlaiveItem;
 import com.frogniche.nichesmobs.item.custom.Ice_Mace;
 import com.frogniche.nichesmobs.item.custom.Nightmares_FangsItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tiers;
+import com.frogniche.nichesmobs.item.custom.VAItem;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -26,12 +26,23 @@ public class ItemInit {
          () -> new Nightmares_FangsItem(Tiers.NETHERITE, 10, 9f,
                  new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
+    public static final RegistryObject<Item> W_S = ITEMS.register("w_s",
+            () -> new ShieldItem(
+                    new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
+
+    public static final RegistryObject<Item> VA = ITEMS.register("va",
+            () -> new VAItem(Tiers.NETHERITE, 10, 9f,
+                    new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
+
     public static final RegistryObject<Item> ICE_MACE = ITEMS.register("ice_mace",
             () -> new Ice_Mace(Tiers.NETHERITE, 10, 9f,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB).fireResistant()));
 
+    public static final RegistryObject<Item> FURIOUS_GLAIVE = ITEMS.register("furious_glaive",
+            () -> new Furious_GlaiveItem(Tiers.NETHERITE, 10, 9f,
+                    new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB).fireResistant()));
  public static final RegistryObject<Item> TASTY_BONE = ITEMS.register("tasty_bone",
-         () -> new SwordItem(Tiers.NETHERITE, 15, 9f,
+         () -> new UnbreakableSword(Tiers.NETHERITE, 15, 9f,
                  new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB).fireResistant()));
 
     public static final RegistryObject<Item> LOGO = ITEMS.register("logo",

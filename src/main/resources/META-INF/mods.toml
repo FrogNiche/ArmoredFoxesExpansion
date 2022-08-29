@@ -6,10 +6,10 @@ modId="nichesmobs" #mandatory
 version="${file.jarVersion}" #mandatory
 displayName="Niche's Mobs" #mandatory
 logoFile="banner.png" #optional
-credits="Thanks for this example mod goes to Java" #optional
-authors="Frog Niche" #optional
+credits="Developed by Niche's Studios" #optional
+authors="Frog Niche, Bretzelfresser, MemcyCraft, and MaxyTurtle" #optional
 description='''
-Niche's Mobs adds a few fictional  mobs to the game
+Niche's Mobs adds a few fictional mobs to the game.
 Our discord server link : https://discord.gg/vJ7jMkgT
 '''
 [[dependencies.nichesmobs]] #optional

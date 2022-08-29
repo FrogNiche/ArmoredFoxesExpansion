@@ -97,7 +97,7 @@ public class WolfieEntity extends Monster implements IAnimatable {
             return true;
         } else {
             if (opfer instanceof LivingEntity) {
-                ((LivingEntity)opfer).addEffect(new MobEffectInstance(ModEffects.FREEZE.get(), 200), this);
+                ((LivingEntity)opfer).addEffect(new MobEffectInstance(ModEffects.FREEZE.get(), 100), this);
             }
         }
         return true;

@@ -19,6 +19,7 @@ import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -77,6 +78,9 @@ public class SPEntity extends Monster implements IAnimatable {
 
         });
         this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, IronGolem.class, true){
+        });
+
+        this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, Villager.class, true){
         });
         this.goalSelector.addGoal(4, new LookAtPlayerGoal(this,Player.class, 8f){
 

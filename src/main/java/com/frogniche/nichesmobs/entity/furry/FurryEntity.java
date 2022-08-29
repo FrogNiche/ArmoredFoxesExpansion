@@ -1,12 +1,16 @@
 package com.frogniche.nichesmobs.entity.furry;
 
+import com.frogniche.nichesmobs.effect.ModEffects;
 import com.frogniche.nichesmobs.entity.EntityInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
@@ -70,11 +74,15 @@ public class FurryEntity extends Monster implements IAnimatable {
 
     @Override
     public boolean doHurtTarget(Entity opfer) {
-        if (super.doHurtTarget(opfer)) {
-            this.level.broadcastEntityEvent(this, (byte) 10);
+        if(super.doHurtTarget(opfer)){
+            this.level.broadcastEntityEvent(this, (byte)10);
             return true;
+        } else {
+            if (opfer instanceof LivingEntity) {
+                ((LivingEntity)opfer).addEffect(new MobEffectInstance(MobEffects.DARKNESS,100), this);
+            }
         }
-        return false;
+        return true;
     }
 
     @Override
