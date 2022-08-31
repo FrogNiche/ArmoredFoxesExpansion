@@ -2,6 +2,8 @@ package com.frogniche.nichesmobs;
 import com.frogniche.nichesmobs.effect.ModEffects;
 import com.frogniche.nichesmobs.entity.EntityInit;
 import com.frogniche.nichesmobs.entity.furry.FurryRenderer;
+import com.frogniche.nichesmobs.entity.n_cauldron.NCauldron;
+import com.frogniche.nichesmobs.entity.n_cauldron.NCauldronRenderer;
 import com.frogniche.nichesmobs.entity.snow_mole.EntitySnowMole;
 import com.frogniche.nichesmobs.entity.snow_mole.SnowMoleRenderer;
 import com.frogniche.nichesmobs.entity.sp.SPEntity;
@@ -68,6 +70,7 @@ public class NichesMobs
         EntityRenderers.register(EntityInit.SNOW_MOLE.get(), SnowMoleRenderer::new);
         EntityRenderers.register(EntityInit.UD.get(), UDRenderer::new);
         EntityRenderers.register(EntityInit.UNDEAD_EXECUTIONER.get(), Undead_ExecutionerRenderer::new);
+        EntityRenderers.register(EntityInit.N_CAUDRON.get(), NCauldronRenderer::new);
     }
     private void registerEntityAttributes(EntityAttributeCreationEvent event){
         event.put(EntityInit.SNOW_MOLE.get(), EntitySnowMole.createAttributes().build());
@@ -76,6 +79,7 @@ public class NichesMobs
         event.put(EntityInit.WOLFIE.get(), WolfieEntity.createAttributes());
         event.put(EntityInit.UD.get(), UDEntity.createAttributes());
         event.put(EntityInit.UNDEAD_EXECUTIONER.get(), Undead_ExecutionerEntity.createAttributes());
+        event.put(EntityInit.N_CAUDRON.get(), NCauldron.createAttributes().build());
     }
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class ClientModEvents

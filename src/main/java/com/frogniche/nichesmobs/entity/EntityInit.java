@@ -39,7 +39,7 @@ public class EntityInit {
     public static final RegistryObject<EntityType<FurryEntity>> FURRY = register("furry",
             EntityType.Builder.<FurryEntity>of(FurryEntity::new,  MobCategory.MONSTER));
 
-    public static final RegistryObject<EntityType<NCauldron>> N_CAUDRON = register("n_cauldron", EntityType.Builder.of(NCauldron::new, MobCategory.AMBIENT).sized(2, 1.5f));
+    public static final RegistryObject<EntityType<NCauldron>> N_CAUDRON = register("n_cauldron", EntityType.Builder.of(NCauldron::new, MobCategory.AMBIENT).sized(2, 2f));
 
     public static final <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> builder){
         return ENTITIES.register(name, () -> builder.build(NichesMobs.modLoc(name).toString()));
