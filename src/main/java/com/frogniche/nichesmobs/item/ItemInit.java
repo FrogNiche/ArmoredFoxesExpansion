@@ -26,9 +26,6 @@ public class ItemInit {
          () -> new Nightmares_FangsItem(Tiers.NETHERITE, 10, 9f,
                  new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
-    public static final RegistryObject<Item> W_S = ITEMS.register("w_s",
-            () -> new ShieldItem(
-                    new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> VA = ITEMS.register("va",
             () -> new VAItem(Tiers.NETHERITE, 10, 9f,

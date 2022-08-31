@@ -26,6 +26,7 @@ public class EntityInit {
 
     public static final RegistryObject<EntityType<SPEntity>> SP = register("sp",
             EntityType.Builder.<SPEntity>of(SPEntity::new,  MobCategory.MONSTER));
+
     public static final RegistryObject<EntityType<WolfieEntity>> WOLFIE = register("wolfie",
             EntityType.Builder.<WolfieEntity>of(WolfieEntity::new,  MobCategory.MONSTER));
 

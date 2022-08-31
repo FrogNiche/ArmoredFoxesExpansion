@@ -38,6 +38,8 @@ public class SPEntity extends Monster implements IAnimatable {
     protected ServerBossEvent bossBar = (ServerBossEvent) new ServerBossEvent(this.getDisplayName(),
 
             BossEvent.BossBarColor.YELLOW, BossEvent.BossBarOverlay.PROGRESS);
+
+    
     {
 
         bossBar.setProgress(this.getHealth() / this.getMaxHealth());
@@ -174,5 +176,6 @@ public class SPEntity extends Monster implements IAnimatable {
     public void setCustomName(@Nullable Component customName) {
         super.setCustomName(customName);
         this.bossBar.setName(this.getDisplayName());
+
     }
 }
