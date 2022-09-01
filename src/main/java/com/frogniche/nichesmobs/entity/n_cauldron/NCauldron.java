@@ -3,33 +3,46 @@ package com.frogniche.nichesmobs.entity.n_cauldron;
 import net.minecraft.client.gui.screens.social.PlayerSocialManager;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.ambient.AmbientCreature;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 
 public class NCauldron extends AmbientCreature implements IAnimatable {
 
     public static final String CONTROLLER_NAME = "controller1";
-    private ServerBossEvent bossEvent = (ServerBossEvent) new ServerBossEvent(this.getDisplayName(),
-            BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
+
+    protected static final EntityDataAccessor<Boolean> SLEEP = SynchedEntityData.defineId(NCauldron.class, EntityDataSerializers.BOOLEAN);
+    protected static final EntityDataAccessor<Boolean> WAS_SLEEP = SynchedEntityData.defineId(NCauldron.class, EntityDataSerializers.BOOLEAN);
+    @OnlyIn(Dist.CLIENT)
+    private int awakeTickCounter;
+    private ServerBossEvent bossEvent = (ServerBossEvent) new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
 
     public static AttributeSupplier.Builder createAttributes(){
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 200);
@@ -42,23 +55,52 @@ public class NCauldron extends AmbientCreature implements IAnimatable {
     }
 
     private PlayState predicate(AnimationEvent<NCauldron> event){
-        return PlayState.CONTINUE;
+        if (awakeTickCounter > 0){
+            awakeTickCounter--;
+            return PlayState.CONTINUE;
+        }
+        if (entityData.get(SLEEP)){
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.n_cauldron.sleep", true));
+            return PlayState.CONTINUE;
+        }
+        if (!entityData.get(SLEEP) && entityData.get(WAS_SLEEP) && this.awakeTickCounter <= 0){
+            this.awakeTickCounter = (int) (20f*3.125f);
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.n_cauldron.awake"));
+            this.entityData.set(WAS_SLEEP, false);
+            return PlayState.CONTINUE;
+        }
+        return PlayState.STOP;
     }
 
     @Override
-    public void knockback(double v1, double v, double p_147243_) {
-        net.minecraftforge.event.entity.living.LivingKnockBackEvent event = net.minecraftforge.common.ForgeHooks.onLivingKnockBack(this, (float) v1, v, p_147243_);
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(SLEEP, true);
+        this.entityData.define(WAS_SLEEP, true);
+    }
+
+    @Override
+    public void knockback(double p_147241_, double p_147242_, double p_147243_) {
+        net.minecraftforge.event.entity.living.LivingKnockBackEvent event = net.minecraftforge.common.ForgeHooks.onLivingKnockBack(this, (float) p_147241_, p_147242_, p_147243_);
         if(event.isCanceled()) return;
-        v1 = event.getStrength();
-        v = event.getRatioX();
+        p_147241_ = event.getStrength();
+        p_147242_ = event.getRatioX();
         p_147243_ = event.getRatioZ();
-        v1 *= 1.0D - this.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
-        if (!(v1 <= 0.0D)) {
+        p_147241_ *= 1.0D - this.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
+        if (!(p_147241_ <= 0.0D)) {
             this.hasImpulse = true;
             Vec3 vec3 = this.getDeltaMovement();
-            Vec3 vec31 = (new Vec3(v, 0.0D, p_147243_)).normalize().scale(v1);
+            Vec3 vec31 = (new Vec3(p_147242_, 0.0D, p_147243_)).normalize().scale(p_147241_);
             this.setDeltaMovement(vec3.x / 2.0D - vec31.x, vec3.y, vec3.z / 2.0D - vec31.z);
         }
+    }
+
+    @Override
+    public boolean hurt(DamageSource p_21016_, float p_21017_) {
+        boolean ret = super.hurt(p_21016_, p_21017_);
+        if (ret)
+            this.entityData.set(SLEEP, false);
+        return ret;
     }
 
     @Override
@@ -77,6 +119,14 @@ public class NCauldron extends AmbientCreature implements IAnimatable {
     @Override
     public void tick() {
         super.tick();
+        if(!this.level.isClientSide()){
+            if (this.entityData.get(SLEEP)) {
+                List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(20), e -> e != this && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(e));
+                if (entities.size() != 0)
+                    this.entityData.set(SLEEP, false);
+            }
+
+        }
         this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
     }
 
