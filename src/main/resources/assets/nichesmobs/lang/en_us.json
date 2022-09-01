@@ -22,6 +22,7 @@
   "entity.nichesmobs.furry": "Furry the Supreme General",
   "entity.nichesmobs.ud": "Undead-Wolf",
   "entity.nichesmobs.undead_executioner": "Undead-Executioner",
+  "entity.nichesmobs.n_cauldron": "Netherite-Cauldron",
   "_comment": "Effects",
   "effect.nichesmobs.freeze": "Freeze"
 }

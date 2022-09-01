@@ -35,7 +35,7 @@ import software.bernie.geckolib3.util.GeckoLibUtil;
 
 public class SPEntity extends Monster implements IAnimatable {
     // is it okay?
-    protected ServerBossEvent bossBar = (ServerBossEvent) new ServerBossEvent(this.getDisplayName(),
+    private ServerBossEvent bossBar = (ServerBossEvent) new ServerBossEvent(this.getDisplayName(),
 
             BossEvent.BossBarColor.YELLOW, BossEvent.BossBarOverlay.PROGRESS);
 

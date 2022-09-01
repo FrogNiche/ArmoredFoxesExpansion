@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
 public class NCauldron extends AmbientCreature implements IAnimatable {
 
     public static final String CONTROLLER_NAME = "controller1";
-    private ServerBossEvent bossEvent = (ServerBossEvent) new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
+    private ServerBossEvent bossEvent = (ServerBossEvent) new ServerBossEvent(this.getDisplayName(),
+            BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
 
     public static AttributeSupplier.Builder createAttributes(){
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 200);
@@ -45,17 +46,17 @@ public class NCauldron extends AmbientCreature implements IAnimatable {
     }
 
     @Override
-    public void knockback(double p_147241_, double p_147242_, double p_147243_) {
-        net.minecraftforge.event.entity.living.LivingKnockBackEvent event = net.minecraftforge.common.ForgeHooks.onLivingKnockBack(this, (float) p_147241_, p_147242_, p_147243_);
+    public void knockback(double v1, double v, double p_147243_) {
+        net.minecraftforge.event.entity.living.LivingKnockBackEvent event = net.minecraftforge.common.ForgeHooks.onLivingKnockBack(this, (float) v1, v, p_147243_);
         if(event.isCanceled()) return;
-        p_147241_ = event.getStrength();
-        p_147242_ = event.getRatioX();
+        v1 = event.getStrength();
+        v = event.getRatioX();
         p_147243_ = event.getRatioZ();
-        p_147241_ *= 1.0D - this.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
-        if (!(p_147241_ <= 0.0D)) {
+        v1 *= 1.0D - this.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
+        if (!(v1 <= 0.0D)) {
             this.hasImpulse = true;
             Vec3 vec3 = this.getDeltaMovement();
-            Vec3 vec31 = (new Vec3(p_147242_, 0.0D, p_147243_)).normalize().scale(p_147241_);
+            Vec3 vec31 = (new Vec3(v, 0.0D, p_147243_)).normalize().scale(v1);
             this.setDeltaMovement(vec3.x / 2.0D - vec31.x, vec3.y, vec3.z / 2.0D - vec31.z);
         }
     }

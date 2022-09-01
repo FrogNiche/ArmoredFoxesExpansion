@@ -7,7 +7,7 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 public class NCauldronModel extends AnimatedGeoModel<NCauldron> {
     @Override
     public ResourceLocation getModelResource(NCauldron object) {
-        return NichesMobs.modLoc("geo/corrupted_cauldron.geo.json");
+        return NichesMobs.modLoc("geo/n_cauldron.geo.json");
     }
 
     @Override
@@ -17,6 +17,6 @@ public class NCauldronModel extends AnimatedGeoModel<NCauldron> {
 
     @Override
     public ResourceLocation getAnimationResource(NCauldron animatable) {
-        return NichesMobs.modLoc("animations/corrupted_cauldron.animation.json");
+        return NichesMobs.modLoc("animations/n_cauldron.animation.json");
     }
 }
