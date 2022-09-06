@@ -81,18 +81,6 @@ public class NCauldron extends AmbientCreature implements IAnimatable {
 
     @Override
     public void knockback(double p_147241_, double p_147242_, double p_147243_) {
-        net.minecraftforge.event.entity.living.LivingKnockBackEvent event = net.minecraftforge.common.ForgeHooks.onLivingKnockBack(this, (float) p_147241_, p_147242_, p_147243_);
-        if(event.isCanceled()) return;
-        p_147241_ = event.getStrength();
-        p_147242_ = event.getRatioX();
-        p_147243_ = event.getRatioZ();
-        p_147241_ *= 1.0D - this.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
-        if (!(p_147241_ <= 0.0D)) {
-            this.hasImpulse = true;
-            Vec3 vec3 = this.getDeltaMovement();
-            Vec3 vec31 = (new Vec3(p_147242_, 0.0D, p_147243_)).normalize().scale(p_147241_);
-            this.setDeltaMovement(vec3.x / 2.0D - vec31.x, vec3.y, vec3.z / 2.0D - vec31.z);
-        }
     }
 
     @Override
