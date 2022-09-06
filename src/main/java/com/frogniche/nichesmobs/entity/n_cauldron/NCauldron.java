@@ -42,7 +42,9 @@ public class NCauldron extends AmbientCreature implements IAnimatable {
     protected static final EntityDataAccessor<Boolean> WAS_SLEEP = SynchedEntityData.defineId(NCauldron.class, EntityDataSerializers.BOOLEAN);
     @OnlyIn(Dist.CLIENT)
     private int awakeTickCounter;
-    private ServerBossEvent bossEvent = (ServerBossEvent) new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
+    private ServerBossEvent bossEvent = (ServerBossEvent) new
+            ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.RED,
+            BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
 
     public static AttributeSupplier.Builder createAttributes(){
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 200);
@@ -54,22 +56,31 @@ public class NCauldron extends AmbientCreature implements IAnimatable {
         super(type, level);
     }
 
+
+
     private PlayState predicate(AnimationEvent<NCauldron> event){
         if (awakeTickCounter > 0){
             awakeTickCounter--;
             return PlayState.CONTINUE;
         }
         if (entityData.get(SLEEP)){
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.n_cauldron.sleep", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation(
+                    "animation.n_cauldron.sleep", true));
             return PlayState.CONTINUE;
         }
         if (!entityData.get(SLEEP) && entityData.get(WAS_SLEEP) && this.awakeTickCounter <= 0){
             this.awakeTickCounter = (int) (20f*3.125f);
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.n_cauldron.awake"));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation(
+                    "animation.n_cauldron.awake"));
             this.entityData.set(WAS_SLEEP, false);
             return PlayState.CONTINUE;
         }
-        return PlayState.STOP;
+        event.getController().setAnimation(new AnimationBuilder().addAnimation
+            ("animation.n_cauldron.idle", true));
+        return PlayState.CONTINUE;
+
+
+
     }
 
     @Override
@@ -80,7 +91,22 @@ public class NCauldron extends AmbientCreature implements IAnimatable {
     }
 
     @Override
-    public void knockback(double p_147241_, double p_147242_, double p_147243_) {
+    public void knockback(double v, double p_147242_, double p_147243_) {
+        net.minecraftforge.event.entity.living.LivingKnockBackEvent event =
+                net.minecraftforge.common.ForgeHooks.onLivingKnockBack(this,
+                        (float) v, p_147242_, p_147243_);
+        if(event.isCanceled()) return;
+        v = event.getStrength();
+        p_147242_ = event.getRatioX();
+        p_147243_ = event.getRatioZ();
+        v *= 1.0D - this.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
+        if (!(v <= 0.0D)) {
+            this.hasImpulse = true;
+            Vec3 vec3 = this.getDeltaMovement();
+            Vec3 vec31 = (new Vec3(p_147242_, 0.0D, p_147243_)).normalize().scale(v);
+            this.setDeltaMovement(vec3.x / 2.0D - vec31.x, vec3.y, vec3.z /
+                    2.0D - vec31.z);
+        }
     }
 
     @Override
@@ -101,7 +127,8 @@ public class NCauldron extends AmbientCreature implements IAnimatable {
 
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, CONTROLLER_NAME, 0, this::predicate));
+        data.addAnimationController(new AnimationController(this,
+                CONTROLLER_NAME, 0, this::predicate));
     }
 
     @Override
@@ -109,7 +136,9 @@ public class NCauldron extends AmbientCreature implements IAnimatable {
         super.tick();
         if(!this.level.isClientSide()){
             if (this.entityData.get(SLEEP)) {
-                List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(20), e -> e != this && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(e));
+                List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class,
+                        this.getBoundingBox().inflate(20), e -> e != this &&
+                                EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(e));
                 if (entities.size() != 0)
                     this.entityData.set(SLEEP, false);
             }
