@@ -1,6 +1,10 @@
 package com.frogniche.nichesmobs;
 import com.frogniche.nichesmobs.effect.ModEffects;
 import com.frogniche.nichesmobs.entity.EntityInit;
+import com.frogniche.nichesmobs.entity.badger.crimsom_badger.CrimsomBadger;
+import com.frogniche.nichesmobs.entity.badger.crimsom_badger.CrimsomBadgerRenderer;
+import com.frogniche.nichesmobs.entity.badger.warped_badger.WarpedBadger;
+import com.frogniche.nichesmobs.entity.badger.warped_badger.WarpedBadgerRenderer;
 import com.frogniche.nichesmobs.entity.furry.FurryRenderer;
 import com.frogniche.nichesmobs.entity.n_cauldron.NCauldron;
 import com.frogniche.nichesmobs.entity.n_cauldron.NCauldronRenderer;
@@ -19,7 +23,6 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -28,11 +31,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.loading.FMLEnvironment;
 import org.slf4j.Logger;
-import software.bernie.example.GeckoLibMod;
 import software.bernie.geckolib3.GeckoLib;
-import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 
 @Mod(NichesMobs.MOD_ID)
 public class NichesMobs
@@ -64,6 +64,8 @@ public class NichesMobs
     }
     private void clientSetup(FMLClientSetupEvent event){
         EntityRenderers.register(EntityInit.SNOW_MOLE.get(), SnowMoleRenderer::new);
+        EntityRenderers.register(EntityInit.WARPED_BADGER.get(), WarpedBadgerRenderer::new);
+        EntityRenderers.register(EntityInit.CRIMSOM_BADGER.get(), CrimsomBadgerRenderer::new);
         EntityRenderers.register(EntityInit.SP.get(), SPRenderer::new);
         EntityRenderers.register(EntityInit.FURRY.get(), FurryRenderer::new);
         EntityRenderers.register(EntityInit.WOLFIE.get(), WolfieRenderer::new);
@@ -74,6 +76,8 @@ public class NichesMobs
     }
     private void registerEntityAttributes(EntityAttributeCreationEvent event){
         event.put(EntityInit.SNOW_MOLE.get(), EntitySnowMole.createAttributes().build());
+        event.put(EntityInit.CRIMSOM_BADGER.get(), CrimsomBadger.createAttributes().build());
+        event.put(EntityInit.WARPED_BADGER.get(), WarpedBadger.createAttributes().build());
         event.put(EntityInit.SP.get(), SPEntity.createAttributes());
         event.put(EntityInit.FURRY.get(), SPEntity.createAttributes());
         event.put(EntityInit.WOLFIE.get(), WolfieEntity.createAttributes());

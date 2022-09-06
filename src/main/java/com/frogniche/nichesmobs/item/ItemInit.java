@@ -52,6 +52,19 @@ public class ItemInit {
             () -> new ForgeSpawnEggItem(EntityInit.WOLFIE,0xF3E8DD, 0xD3D3D3,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
+    public static final RegistryObject<Item> N_SPAWN_EGG = ITEMS.register("n_spawn_egg",
+            () -> new ForgeSpawnEggItem(EntityInit.N_CAUDRON, 0x1d1819, 0x3e3a3e,
+                    new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
+
+    public static final RegistryObject<Item> WB_SPAWN_EGG = ITEMS.register("wb_spawn_egg",
+            () -> new ForgeSpawnEggItem(EntityInit.WARPED_BADGER, 0x4f1e1c, 0x7e1d1d,
+                    new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
+
+    public static final RegistryObject<Item> CB_SPAWN_EGG = ITEMS.register("cb_spawn_egg",
+            () -> new ForgeSpawnEggItem(EntityInit.CRIMSOM_BADGER, 0x06564c, 0x187d84,
+                    new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
+
+
     public static final RegistryObject<Item> UNDEAD_EXECUTIONER_SPAWN_EGG = ITEMS.register("undead_executioner_spawn_egg",
             () -> new ForgeSpawnEggItem(EntityInit.UNDEAD_EXECUTIONER,0x8bc34a, 0x8bc34a,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));

@@ -12,7 +12,7 @@ public class NCauldronModel extends AnimatedGeoModel<NCauldron> {
 
     @Override
     public ResourceLocation getTextureResource(NCauldron object) {
-        return NichesMobs.modLoc("textures/entity/n_cauldron.png");
+        return NichesMobs.modLoc("textures/entity//n_cauldron/cauldron.png");
     }
 
     @Override
