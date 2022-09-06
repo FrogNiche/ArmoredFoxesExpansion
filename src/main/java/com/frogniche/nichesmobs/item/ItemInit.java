@@ -25,7 +25,7 @@ public class ItemInit {
  public static final RegistryObject<Item> NIGHTMARES_FANGS = ITEMS.register("nightmares_fangs",
          () -> new Nightmares_FangsItem(Tiers.NETHERITE, 10, 9f,
                  new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
-
+// WHAT'S GOING ON????
 
     public static final RegistryObject<Item> VA = ITEMS.register("va",
             () -> new VAItem(Tiers.NETHERITE, 10, 9f,
