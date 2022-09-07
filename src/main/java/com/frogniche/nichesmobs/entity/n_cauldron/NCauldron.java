@@ -44,7 +44,7 @@ public class NCauldron extends AmbientCreature implements IAnimatable {
     private int awakeTickCounter;
     private ServerBossEvent bossEvent = (ServerBossEvent) new
             ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.RED,
-            BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
+            BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(false);
 
     public static AttributeSupplier.Builder createAttributes(){
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 200);
@@ -78,9 +78,6 @@ public class NCauldron extends AmbientCreature implements IAnimatable {
         event.getController().setAnimation(new AnimationBuilder().addAnimation
             ("animation.n_cauldron.idle", true));
         return PlayState.CONTINUE;
-
-
-
     }
 
     @Override

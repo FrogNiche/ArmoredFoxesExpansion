@@ -9,6 +9,7 @@ import com.frogniche.nichesmobs.entity.snow_mole.EntitySnowMole;
 import com.frogniche.nichesmobs.entity.sp.SPEntity;
 import com.frogniche.nichesmobs.entity.ud.UDEntity;
 import com.frogniche.nichesmobs.entity.undead_executioner.Undead_ExecutionerEntity;
+import com.frogniche.nichesmobs.entity.wavy.WavyGeo;
 import com.frogniche.nichesmobs.entity.wolfie.WolfieEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -40,6 +41,9 @@ public class EntityInit {
 
     public static final RegistryObject<EntityType<FurryEntity>> FURRY = register("furry",
             EntityType.Builder.<FurryEntity>of(FurryEntity::new,  MobCategory.MONSTER));
+
+    public static final RegistryObject<EntityType<WavyGeo>> WAVY_GEO = register("wavy_geo",
+            EntityType.Builder.<WavyGeo>of(WavyGeo::new,  MobCategory.MONSTER));
     public static final RegistryObject<EntityType<WarpedBadger>> WARPED_BADGER = register("warped_badger",
             EntityType.Builder.<WarpedBadger>of(WarpedBadger::new,  MobCategory.AMBIENT));
     public static final RegistryObject<EntityType<CrimsomBadger>> CRIMSOM_BADGER = register("crimsom_badger",

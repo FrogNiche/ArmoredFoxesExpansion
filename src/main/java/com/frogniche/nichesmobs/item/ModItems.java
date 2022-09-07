@@ -6,7 +6,6 @@ import com.frogniche.nichesmobs.item.custom.Furious_GlaiveItem;
 import com.frogniche.nichesmobs.item.custom.Ice_Mace;
 import com.frogniche.nichesmobs.item.custom.Nightmares_FangsItem;
 import com.frogniche.nichesmobs.item.custom.VAItem;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -14,7 +13,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ItemInit {
+public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, NichesMobs.MOD_ID);
 // The Snow-Mole

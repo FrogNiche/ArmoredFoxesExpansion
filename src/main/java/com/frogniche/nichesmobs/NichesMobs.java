@@ -18,7 +18,7 @@ import com.frogniche.nichesmobs.entity.undead_executioner.Undead_ExecutionerEnti
 import com.frogniche.nichesmobs.entity.undead_executioner.Undead_ExecutionerRenderer;
 import com.frogniche.nichesmobs.entity.wolfie.WolfieEntity;
 import com.frogniche.nichesmobs.entity.wolfie.WolfieRenderer;
-import com.frogniche.nichesmobs.item.ItemInit;
+import com.frogniche.nichesmobs.item.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -48,7 +48,7 @@ public class NichesMobs
     public NichesMobs() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         // Add to the constructor
-        ItemInit.register(modEventBus);
+        ModItems.register(modEventBus);
         ModEffects.register(modEventBus);
         EntityInit.ENTITIES.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
