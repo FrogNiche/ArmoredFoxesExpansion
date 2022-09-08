@@ -2,11 +2,15 @@ package com.frogniche.nichesmobs.entity.wavy;
 import com.frogniche.nichesmobs.entity.EntityInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerBossEvent;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -32,13 +36,17 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 public class WavyGeo extends Monster implements IAnimatable {
+    private ServerBossEvent bossEvent = (ServerBossEvent) new
+            ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.GREEN,
+            BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(false);
 
     public static final AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 50)
+                .add(Attributes.MAX_HEALTH, 400)
                 .add(Attributes.ATTACK_DAMAGE, 15)
                 .add(Attributes.ARMOR, 10)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 6)
@@ -91,14 +99,18 @@ public class WavyGeo extends Monster implements IAnimatable {
             }else if(this.getTarget() == null && this.getLastHurtByMob() != null && this.getLastHurtByMob().distanceToSqr(this) < 4){
                 this.entityData.set(SLEEP, true);
             }
+            this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
+
+            }
         }
-    }
     @Override
     public boolean hurt(DamageSource source, float damage) {
         if(this.isSleeping() && source.getEntity() != null)
             this.entityData.set(SLEEP, false);
         return super.hurt(source, damage);
+
     }
+
 
     @Override
     public boolean doHurtTarget(Entity opfer) {
@@ -120,7 +132,10 @@ public class WavyGeo extends Monster implements IAnimatable {
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putBoolean("sleeping", isSleeping());
-    }
+            if (this.hasCustomName()) {
+                this.bossEvent.setName(this.getDisplayName());
+            }
+        }
 
     @Override
     public void readAdditionalSaveData(CompoundTag tag) {
@@ -153,7 +168,23 @@ public class WavyGeo extends Monster implements IAnimatable {
     @Override
     public AnimationFactory getFactory() {
         return factory;
+
     }
+    public void startSeenByPlayer(ServerPlayer p_31483_) {
+        super.startSeenByPlayer(p_31483_);
+        this.bossEvent.addPlayer(p_31483_);
+    }
+
+    public void stopSeenByPlayer(ServerPlayer p_31488_) {
+        super.stopSeenByPlayer(p_31488_);
+        this.bossEvent.removePlayer(p_31488_);
+    }
+
+    public void setCustomName(@Nullable Component name) {
+        super.setCustomName(name);
+        this.bossEvent.setName(this.getDisplayName());
+    }
+
 
     public boolean isSleeping(){
         return this.entityData.get(SLEEP);

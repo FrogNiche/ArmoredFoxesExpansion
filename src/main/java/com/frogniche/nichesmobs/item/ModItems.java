@@ -41,6 +41,10 @@ public class ModItems {
          () -> new UnbreakableSword(Tiers.NETHERITE, 15, 9f,
                  new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB).fireResistant()));
 
+    public static final RegistryObject<Item> GEOMANCY_HAMMER = ITEMS.register("geomancy_hammer",
+            () -> new UnbreakableSword(Tiers.NETHERITE, 15, 9f,
+                    new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB).fireResistant()));
+
     public static final RegistryObject<Item> LOGO = ITEMS.register("logo",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_SEARCH)));
 
@@ -56,11 +60,11 @@ public class ModItems {
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> WB_SPAWN_EGG = ITEMS.register("wb_spawn_egg",
-            () -> new ForgeSpawnEggItem(EntityInit.WARPED_BADGER, 0x4f1e1c, 0x7e1d1d,
+            () -> new ForgeSpawnEggItem(EntityInit.WARPED_BADGER, 0x06564c, 0x187d84,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> CB_SPAWN_EGG = ITEMS.register("cb_spawn_egg",
-            () -> new ForgeSpawnEggItem(EntityInit.CRIMSOM_BADGER, 0x06564c, 0x187d84,
+            () -> new ForgeSpawnEggItem(EntityInit.CRIMSOM_BADGER, 0x4f1e1c, 0x7e1d1d,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
 
@@ -78,6 +82,10 @@ public class ModItems {
 
     public static final RegistryObject<Item> UD_SPAWN_EGG = ITEMS.register("ud_spawn_egg",
             () -> new ForgeSpawnEggItem(EntityInit.UD,0x1f1f1f, 0x000000,
+                    new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
+
+    public static final RegistryObject<Item> W_SPAWN_EGG = ITEMS.register("w_spawn_egg",
+            () -> new ForgeSpawnEggItem(EntityInit.WAVY_GEO,0xaec77d, 0xd84315,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

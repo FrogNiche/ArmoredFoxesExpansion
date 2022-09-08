@@ -16,6 +16,8 @@ import com.frogniche.nichesmobs.entity.ud.UDEntity;
 import com.frogniche.nichesmobs.entity.ud.UDRenderer;
 import com.frogniche.nichesmobs.entity.undead_executioner.Undead_ExecutionerEntity;
 import com.frogniche.nichesmobs.entity.undead_executioner.Undead_ExecutionerRenderer;
+import com.frogniche.nichesmobs.entity.wavy.WavyGeo;
+import com.frogniche.nichesmobs.entity.wavy.WavyRenderer;
 import com.frogniche.nichesmobs.entity.wolfie.WolfieEntity;
 import com.frogniche.nichesmobs.entity.wolfie.WolfieRenderer;
 import com.frogniche.nichesmobs.item.ModItems;
@@ -67,6 +69,7 @@ public class NichesMobs
         EntityRenderers.register(EntityInit.WARPED_BADGER.get(), WarpedBadgerRenderer::new);
         EntityRenderers.register(EntityInit.CRIMSOM_BADGER.get(), CrimsomBadgerRenderer::new);
         EntityRenderers.register(EntityInit.SP.get(), SPRenderer::new);
+        EntityRenderers.register(EntityInit.WAVY_GEO.get(), WavyRenderer::new);
         EntityRenderers.register(EntityInit.FURRY.get(), FurryRenderer::new);
         EntityRenderers.register(EntityInit.WOLFIE.get(), WolfieRenderer::new);
         EntityRenderers.register(EntityInit.SNOW_MOLE.get(), SnowMoleRenderer::new);
@@ -83,6 +86,7 @@ public class NichesMobs
         event.put(EntityInit.WOLFIE.get(), WolfieEntity.createAttributes());
         event.put(EntityInit.UD.get(), UDEntity.createAttributes());
         event.put(EntityInit.UNDEAD_EXECUTIONER.get(), Undead_ExecutionerEntity.createAttributes());
+        event.put(EntityInit.WAVY_GEO.get(), WavyGeo.createAttributes());
         event.put(EntityInit.N_CAUDRON.get(), NCauldron.createAttributes().build());
     }
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
