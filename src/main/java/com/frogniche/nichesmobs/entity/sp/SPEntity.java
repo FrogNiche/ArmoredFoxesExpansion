@@ -40,10 +40,6 @@ public class SPEntity extends Monster implements IAnimatable {
             BossEvent.BossBarColor.YELLOW, BossEvent.BossBarOverlay.PROGRESS);
 
 
-    {
-
-        bossBar.setProgress(this.getHealth() / this.getMaxHealth());
-    }
 
     public static final AttributeSupplier createAttributes(){
         return Monster.createMonsterAttributes()
@@ -101,6 +97,10 @@ public class SPEntity extends Monster implements IAnimatable {
             return true;
 
         }
+        {
+
+            bossBar.setProgress(this.getHealth() / this.getMaxHealth());
+        }
         return false;
     }
 
@@ -117,11 +117,6 @@ public class SPEntity extends Monster implements IAnimatable {
     private PlayState predicate(AnimationEvent event){
         if(event.getController().getCurrentAnimation() != null && event.getController().getCurrentAnimation().animationName.equals("animation.sp.attack"))
             return PlayState.CONTINUE;
-
-        if (isSleeping()){
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.sp.sleep", true));
-            return PlayState.CONTINUE;
-        }
         if (event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.sp.walk", true));
             return PlayState.CONTINUE;

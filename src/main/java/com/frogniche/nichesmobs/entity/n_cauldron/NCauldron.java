@@ -47,7 +47,7 @@ public class NCauldron extends AmbientCreature implements IAnimatable {
             BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(false);
 
     public static AttributeSupplier.Builder createAttributes(){
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 200);
+        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 400);
     }
 
     private AnimationFactory factory = new AnimationFactory(this);
