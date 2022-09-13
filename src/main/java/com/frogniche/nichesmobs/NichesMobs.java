@@ -5,6 +5,8 @@ import com.frogniche.nichesmobs.entity.badger.crimsom_badger.CrimsomBadger;
 import com.frogniche.nichesmobs.entity.badger.crimsom_badger.CrimsomBadgerRenderer;
 import com.frogniche.nichesmobs.entity.badger.warped_badger.WarpedBadger;
 import com.frogniche.nichesmobs.entity.badger.warped_badger.WarpedBadgerRenderer;
+import com.frogniche.nichesmobs.entity.end_frog.EndFrog;
+import com.frogniche.nichesmobs.entity.end_frog.EndFrogRenderer;
 import com.frogniche.nichesmobs.entity.furry.FurryRenderer;
 import com.frogniche.nichesmobs.entity.n_cauldron.NCauldron;
 import com.frogniche.nichesmobs.entity.n_cauldron.NCauldronRenderer;
@@ -25,6 +27,7 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -66,6 +69,7 @@ public class NichesMobs
     }
     private void clientSetup(FMLClientSetupEvent event){
         EntityRenderers.register(EntityInit.SNOW_MOLE.get(), SnowMoleRenderer::new);
+        EntityRenderers.register(EntityInit.END_FROG.get(), EndFrogRenderer::new);
         EntityRenderers.register(EntityInit.WARPED_BADGER.get(), WarpedBadgerRenderer::new);
         EntityRenderers.register(EntityInit.CRIMSOM_BADGER.get(), CrimsomBadgerRenderer::new);
         EntityRenderers.register(EntityInit.SP.get(), SPRenderer::new);
@@ -79,6 +83,7 @@ public class NichesMobs
     }
     private void registerEntityAttributes(EntityAttributeCreationEvent event){
         event.put(EntityInit.SNOW_MOLE.get(), EntitySnowMole.createAttributes().build());
+        event.put(EntityInit.END_FROG.get(), EndFrog.createAttributes().build());
         event.put(EntityInit.CRIMSOM_BADGER.get(), CrimsomBadger.createAttributes().build());
         event.put(EntityInit.WARPED_BADGER.get(), WarpedBadger.createAttributes().build());
         event.put(EntityInit.SP.get(), SPEntity.createAttributes());

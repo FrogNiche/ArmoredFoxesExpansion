@@ -39,7 +39,7 @@ public class SPEntity extends Monster implements IAnimatable {
 
             BossEvent.BossBarColor.YELLOW, BossEvent.BossBarOverlay.PROGRESS);
 
-    
+
     {
 
         bossBar.setProgress(this.getHealth() / this.getMaxHealth());
@@ -99,6 +99,7 @@ public class SPEntity extends Monster implements IAnimatable {
         if(super.doHurtTarget(opfer)){
             this.level.broadcastEntityEvent(this, (byte)10);
             return true;
+
         }
         return false;
     }

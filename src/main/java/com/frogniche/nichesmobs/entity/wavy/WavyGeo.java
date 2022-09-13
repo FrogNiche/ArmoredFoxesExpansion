@@ -22,7 +22,9 @@ import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.TargetGoal;
+import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -77,14 +79,20 @@ public class WavyGeo extends Monster implements IAnimatable {
         this.goalSelector.addGoal(1, new NearestAttackableTargetGoal(this, Player.class, true){
 
         });
-        this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class, 8f){
+
+        this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, Monster.class, true){
 
         });
+
+        this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, Monster.class, true){
+
+        });
+        this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, IronGolem.class, true){
+        });
+
+        this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, Villager.class, true){
+        });
         this.goalSelector.addGoal(10, new RandomStrollGoal(this, 1f){
-            @Override
-            public boolean canUse() {
-                return super.canUse() && !isSleeping();
-            }
         });
     }
 
@@ -105,8 +113,6 @@ public class WavyGeo extends Monster implements IAnimatable {
         }
     @Override
     public boolean hurt(DamageSource source, float damage) {
-        if(this.isSleeping() && source.getEntity() != null)
-            this.entityData.set(SLEEP, false);
         return super.hurt(source, damage);
 
     }

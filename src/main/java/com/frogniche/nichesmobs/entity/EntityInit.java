@@ -3,6 +3,7 @@ package com.frogniche.nichesmobs.entity;
 import com.frogniche.nichesmobs.NichesMobs;
 import com.frogniche.nichesmobs.entity.badger.crimsom_badger.CrimsomBadger;
 import com.frogniche.nichesmobs.entity.badger.warped_badger.WarpedBadger;
+import com.frogniche.nichesmobs.entity.end_frog.EndFrog;
 import com.frogniche.nichesmobs.entity.furry.FurryEntity;
 import com.frogniche.nichesmobs.entity.n_cauldron.NCauldron;
 import com.frogniche.nichesmobs.entity.snow_mole.EntitySnowMole;
@@ -26,6 +27,9 @@ public class EntityInit {
 
     public static final RegistryObject<EntityType<EntitySnowMole>> SNOW_MOLE = register("snow_mole",
             EntityType.Builder.<EntitySnowMole>of(EntitySnowMole::new,  MobCategory.AMBIENT));
+
+    public static final RegistryObject<EntityType<EndFrog>> END_FROG = register("end_frog",
+            EntityType.Builder.<EndFrog>of(EndFrog::new,  MobCategory.AMBIENT));
 
     public static final RegistryObject<EntityType<SPEntity>> SP = register("sp",
             EntityType.Builder.<SPEntity>of(SPEntity::new,  MobCategory.MONSTER));

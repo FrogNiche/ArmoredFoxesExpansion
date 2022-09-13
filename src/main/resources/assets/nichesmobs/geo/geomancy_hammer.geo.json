@@ -1,0 +1,31 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.geomancy_hammer",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "geomancy_hammer",
+					"pivot": [-0.04497, 1.55843, -5.60041],
+					"cubes": [
+						{"origin": [-0.5514, 1.89074, -8], "size": [1, 2, 2], "uv": [12, 19]},
+						{"origin": [-0.5514, 2.89074, -9], "size": [1, 2, 2], "uv": [6, 19]},
+						{"origin": [-0.5514, 3.89074, -10], "size": [1, 2, 2], "uv": [0, 19]},
+						{"origin": [-0.5514, 4.89074, -11], "size": [1, 2, 2], "uv": [4, 8]},
+						{"origin": [-0.5514, 5.89074, -12], "size": [1, 2, 2], "uv": [6, 4]},
+						{"origin": [-0.5514, 6.89074, -13], "size": [1, 2, 2], "uv": [0, 6]},
+						{"origin": [-0.5514, -0.10926, -7], "size": [1, 3, 3], "uv": [0, 0]},
+						{"origin": [-3.5, 10.3406, -11.00426], "size": [7, 7, 12], "pivot": [-0.0257, 1.06149, -5.90165], "rotation": [45, 0, 0], "uv": [0, 0]}
+					]
+				}
+			]
+		}
+	]
+}
