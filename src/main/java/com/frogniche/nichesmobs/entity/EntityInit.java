@@ -4,6 +4,7 @@ import com.frogniche.nichesmobs.NichesMobs;
 import com.frogniche.nichesmobs.entity.badger.crimsom_badger.CrimsomBadger;
 import com.frogniche.nichesmobs.entity.badger.warped_badger.WarpedBadger;
 import com.frogniche.nichesmobs.entity.end_frog.EndFrog;
+import com.frogniche.nichesmobs.entity.end_tadpole.EndTadpole;
 import com.frogniche.nichesmobs.entity.furry.FurryEntity;
 import com.frogniche.nichesmobs.entity.n_cauldron.NCauldron;
 import com.frogniche.nichesmobs.entity.snow_mole.EntitySnowMole;
@@ -29,13 +30,16 @@ public class EntityInit {
             EntityType.Builder.<EntitySnowMole>of(EntitySnowMole::new,  MobCategory.AMBIENT));
 
     public static final RegistryObject<EntityType<EndFrog>> END_FROG = register("end_frog",
-            EntityType.Builder.<EndFrog>of(EndFrog::new,  MobCategory.AMBIENT));
+            EntityType.Builder.<EndFrog>of(EndFrog::new, MobCategory.CREATURE).sized(0.5F, 0.5F).clientTrackingRange(10));
 
     public static final RegistryObject<EntityType<SPEntity>> SP = register("sp",
             EntityType.Builder.<SPEntity>of(SPEntity::new,  MobCategory.MONSTER));
 
     public static final RegistryObject<EntityType<WolfieEntity>> WOLFIE = register("wolfie",
             EntityType.Builder.<WolfieEntity>of(WolfieEntity::new,  MobCategory.MONSTER));
+
+    public static final RegistryObject<EntityType<EndTadpole>> END_TADPOLE = register("end_tadpole",
+            EntityType.Builder.<EndTadpole>of(EndTadpole::new,  MobCategory.CREATURE));
 
     public static final RegistryObject<EntityType<Undead_ExecutionerEntity>> UNDEAD_EXECUTIONER = register("undead_executioner",
             EntityType.Builder.<Undead_ExecutionerEntity>of(Undead_ExecutionerEntity::new,  MobCategory.MONSTER));

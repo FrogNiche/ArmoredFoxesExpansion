@@ -14,6 +14,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, NichesMobs.MOD_ID);
@@ -60,7 +61,11 @@ public class ModItems {
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> E_FROG_SPAWN_EGG = ITEMS.register("e_frog_spawn_egg",
-            () -> new ForgeSpawnEggItem(EntityInit.WOLFIE,0xe1d7e1, 0x3a143a,
+            () -> new ForgeSpawnEggItem(EntityInit.END_FROG,0xe1d7e1, 0x3a143a,
+                    new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
+
+    public static final RegistryObject<Item> E_T_SPAWN_EGG = ITEMS.register("e_t_spawn_egg",
+            () -> new ForgeSpawnEggItem(EntityInit.END_TADPOLE,0x3a143a, 0xe3e29f,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> N_SPAWN_EGG = ITEMS.register("n_spawn_egg",
@@ -94,6 +99,7 @@ public class ModItems {
     public static final RegistryObject<Item> W_SPAWN_EGG = ITEMS.register("w_spawn_egg",
             () -> new ForgeSpawnEggItem(EntityInit.WAVY_GEO,0xaec77d, 0xd84315,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

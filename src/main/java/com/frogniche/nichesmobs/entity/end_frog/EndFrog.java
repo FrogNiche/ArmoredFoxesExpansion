@@ -98,29 +98,6 @@ public class EndFrog extends Animal implements IAnimatable {
         return PlayState.CONTINUE;
     }
 
-    public boolean fromBucket() {
-        return true;
-    }
-
-    public void setFromBucket(boolean p_218732_) {
-    }
-
-    public void saveToBucketTag(ItemStack p_218725_) {
-        Bucketable.saveDefaultDataToBucketTag(this, p_218725_);
-        CompoundTag compoundtag = p_218725_.getOrCreateTag();
-        compoundtag.putInt("Age", this.getAge());
-    }
-
-    public void loadFromBucketTag(CompoundTag p_218715_) {
-        Bucketable.loadDefaultDataFromBucketTag(this, p_218715_);
-        if (p_218715_.contains("Age")) {
-            this.setAge(p_218715_.getInt("Age"));
-        }
-
-    }
-
-
-
     @Override
     public void registerControllers(AnimationData data) {
         data.addAnimationController(new AnimationController(this, CONTROLLER_NAME, 20, this::predicate));
@@ -162,11 +139,4 @@ public class EndFrog extends Animal implements IAnimatable {
 
         return super.hurt(p_27567_, p_27568_);
     }
-    public ItemStack getBucketItemStack() {
-        return new ItemStack(Items.BUCKET);
-    }
-
-    public SoundEvent getPickupSound() {
-        return SoundEvents.BUCKET_FILL_AXOLOTL;
-    }
-    }
+}

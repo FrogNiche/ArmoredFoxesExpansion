@@ -120,6 +120,7 @@ public class SPEntity extends Monster implements IAnimatable {
         if (event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.sp.walk", true));
             return PlayState.CONTINUE;
+
         }
         event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.sp.idle", true));
         return PlayState.CONTINUE;

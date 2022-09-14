@@ -3,7 +3,7 @@ loaderVersion="[41,)" #mandatory This is typically bumped every Minecraft versio
 license="All rights reserved"
 [[mods]]
 modId="nichesmobs" #mandatory
-version="${file.jarVersion}" #mandatory
+version="5.0" #mandatory
 displayName="Niche's Mobs" #mandatory
 logoFile="banner.png" #optional
 credits="Developed by Niche's Studios" #optional
