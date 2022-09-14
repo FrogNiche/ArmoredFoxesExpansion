@@ -52,8 +52,8 @@ If you find it difficult to post the issue, you can report it into the discord s
 ### https://discord.gg/sGTTDPk7
 
 **Note**: If this link expires, please report it to me to 
-put a new one:)
+put a new one :)
 
 #### Created by MaxyTurtle on 14th of September 2022.
-
+Thank you MaxyTurtle for the support on the README! Much appreciated!!!
 Thanks for reading the information on about the mod
