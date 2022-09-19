@@ -9,7 +9,7 @@ logoFile="banner.png" #optional
 credits="Developed by Niche's Studios" #optional
 authors="Frog Niche, Bretzelfresser, MemcyCraft, and MaxyTurtle" #optional
 description='''
-Niche's Mobs adds a few fictional mobs to the game.
+Niche's Mobs adds fictional mobs to your world.
 Our discord server link : https://discord.gg/vJ7jMkgT
 '''
 [[dependencies.nichesmobs]] #optional

@@ -9,7 +9,11 @@ import com.frogniche.nichesmobs.entity.end_frog.EndFrog;
 import com.frogniche.nichesmobs.entity.end_frog.EndFrogRenderer;
 import com.frogniche.nichesmobs.entity.end_tadpole.EndTadpole;
 import com.frogniche.nichesmobs.entity.end_tadpole.EndTadpoleRenderer;
+import com.frogniche.nichesmobs.entity.françois.Francois;
+import com.frogniche.nichesmobs.entity.françois.FrancoisRenderer;
 import com.frogniche.nichesmobs.entity.furry.FurryRenderer;
+import com.frogniche.nichesmobs.entity.guard.GuardEntity;
+import com.frogniche.nichesmobs.entity.guard.GuardRenderer;
 import com.frogniche.nichesmobs.entity.n_cauldron.NCauldron;
 import com.frogniche.nichesmobs.entity.n_cauldron.NCauldronRenderer;
 import com.frogniche.nichesmobs.entity.snow_mole.EntitySnowMole;
@@ -72,10 +76,12 @@ public class NichesMobs
     private void clientSetup(FMLClientSetupEvent event){
         EntityRenderers.register(EntityInit.SNOW_MOLE.get(), SnowMoleRenderer::new);
         EntityRenderers.register(EntityInit.END_TADPOLE.get(), EndTadpoleRenderer::new);
+        EntityRenderers.register(EntityInit.FRANCOIS.get(), FrancoisRenderer::new);
         EntityRenderers.register(EntityInit.END_FROG.get(), EndFrogRenderer::new);
         EntityRenderers.register(EntityInit.WARPED_BADGER.get(), WarpedBadgerRenderer::new);
         EntityRenderers.register(EntityInit.CRIMSOM_BADGER.get(), CrimsomBadgerRenderer::new);
         EntityRenderers.register(EntityInit.SP.get(), SPRenderer::new);
+        EntityRenderers.register(EntityInit.GUARD.get(), GuardRenderer::new);
         EntityRenderers.register(EntityInit.WAVY_GEO.get(), WavyRenderer::new);
         EntityRenderers.register(EntityInit.FURRY.get(), FurryRenderer::new);
         EntityRenderers.register(EntityInit.WOLFIE.get(), WolfieRenderer::new);
@@ -86,11 +92,13 @@ public class NichesMobs
     }
     private void registerEntityAttributes(EntityAttributeCreationEvent event){
         event.put(EntityInit.SNOW_MOLE.get(), EntitySnowMole.createAttributes().build());
+        event.put(EntityInit.FRANCOIS.get(), Francois.createAttributes().build());
         event.put(EntityInit.END_TADPOLE.get(), EndTadpole.createAttributes().build());
         event.put(EntityInit.END_FROG.get(), EndFrog.createAttributes().build());
         event.put(EntityInit.CRIMSOM_BADGER.get(), CrimsomBadger.createAttributes().build());
         event.put(EntityInit.WARPED_BADGER.get(), WarpedBadger.createAttributes().build());
         event.put(EntityInit.SP.get(), SPEntity.createAttributes());
+        event.put(EntityInit.GUARD.get(), GuardEntity.createAttributes());
         event.put(EntityInit.FURRY.get(), SPEntity.createAttributes());
         event.put(EntityInit.WOLFIE.get(), WolfieEntity.createAttributes());
         event.put(EntityInit.UD.get(), UDEntity.createAttributes());

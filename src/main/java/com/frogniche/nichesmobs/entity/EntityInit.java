@@ -6,6 +6,7 @@ import com.frogniche.nichesmobs.entity.badger.warped_badger.WarpedBadger;
 import com.frogniche.nichesmobs.entity.end_frog.EndFrog;
 import com.frogniche.nichesmobs.entity.end_tadpole.EndTadpole;
 import com.frogniche.nichesmobs.entity.furry.FurryEntity;
+import com.frogniche.nichesmobs.entity.guard.GuardEntity;
 import com.frogniche.nichesmobs.entity.n_cauldron.NCauldron;
 import com.frogniche.nichesmobs.entity.snow_mole.EntitySnowMole;
 import com.frogniche.nichesmobs.entity.sp.SPEntity;
@@ -13,6 +14,7 @@ import com.frogniche.nichesmobs.entity.ud.UDEntity;
 import com.frogniche.nichesmobs.entity.undead_executioner.Undead_ExecutionerEntity;
 import com.frogniche.nichesmobs.entity.wavy.WavyGeo;
 import com.frogniche.nichesmobs.entity.wolfie.WolfieEntity;
+import com.frogniche.nichesmobs.entity.françois.Francois;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -29,11 +31,17 @@ public class EntityInit {
     public static final RegistryObject<EntityType<EntitySnowMole>> SNOW_MOLE = register("snow_mole",
             EntityType.Builder.<EntitySnowMole>of(EntitySnowMole::new,  MobCategory.AMBIENT));
 
+    public static final RegistryObject<EntityType<Francois>> FRANCOIS = register("francois",
+            EntityType.Builder.<Francois>of(Francois::new,  MobCategory.AMBIENT));
+
     public static final RegistryObject<EntityType<EndFrog>> END_FROG = register("end_frog",
             EntityType.Builder.<EndFrog>of(EndFrog::new, MobCategory.CREATURE).sized(0.5F, 0.5F).clientTrackingRange(10));
 
     public static final RegistryObject<EntityType<SPEntity>> SP = register("sp",
             EntityType.Builder.<SPEntity>of(SPEntity::new,  MobCategory.MONSTER));
+
+    public static final RegistryObject<EntityType<GuardEntity>> GUARD = register("guard",
+            EntityType.Builder.<GuardEntity>of(GuardEntity::new,  MobCategory.MONSTER));
 
     public static final RegistryObject<EntityType<WolfieEntity>> WOLFIE = register("wolfie",
             EntityType.Builder.<WolfieEntity>of(WolfieEntity::new,  MobCategory.MONSTER));

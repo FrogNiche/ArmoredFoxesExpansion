@@ -3,11 +3,8 @@ package com.frogniche.nichesmobs.item;
 import com.frogniche.nichesmobs.NichesMobs;
 import com.frogniche.nichesmobs.entity.EntityInit;
 import com.frogniche.nichesmobs.item.custom.*;
-import com.frogniche.nichesmobs.item.custom.geomancy_hammer.GeomancyHammerItem;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.EntityType;
+import com.frogniche.nichesmobs.item.custom.whip.Corrupted_Whip;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -32,19 +29,19 @@ public class ModItems {
             () -> new VAItem(Tiers.NETHERITE, 10, 9f,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
-    public static final RegistryObject<Item> ICE_MACE = ITEMS.register("ice_mace",
-            () -> new Ice_Mace(Tiers.NETHERITE, 10, 9f,
+    public static final RegistryObject<Item> ICE_HAMMER = ITEMS.register("ice_hammer",
+            () -> new IceHammer(Tiers.NETHERITE, 10, 9f,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB).fireResistant()));
 
-    public static final RegistryObject<Item> FURIOUS_GLAIVE = ITEMS.register("furious_glaive",
-            () -> new Furious_GlaiveItem(Tiers.NETHERITE, 10, 9f,
+    public static final RegistryObject<Item> CORRUPTED_WHIP = ITEMS.register("corrupted_whip",
+            () -> new Corrupted_Whip(Tiers.NETHERITE, 10, 9f,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB).fireResistant()));
  public static final RegistryObject<Item> TASTY_BONE = ITEMS.register("tasty_bone",
          () -> new UnbreakableSword(Tiers.NETHERITE, 15, 9f,
                  new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB).fireResistant()));
 
     public static final RegistryObject<Item> GEOMANCY_HAMMER = ITEMS.register("geomancy_hammer",
-            () -> new GeomancyHammerItem(
+            () -> new PickaxeItem(Tiers.NETHERITE, 1, -2.8F,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB).fireResistant()));
 
     public static final RegistryObject<Item> LOGO = ITEMS.register("logo",
@@ -63,7 +60,7 @@ public class ModItems {
     public static final RegistryObject<Item> E_FROG_SPAWN_EGG = ITEMS.register("e_frog_spawn_egg",
             () -> new ForgeSpawnEggItem(EntityInit.END_FROG,0xe1d7e1, 0x3a143a,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
-
+// The Spawn Egg Edition!
     public static final RegistryObject<Item> E_T_SPAWN_EGG = ITEMS.register("e_t_spawn_egg",
             () -> new ForgeSpawnEggItem(EntityInit.END_TADPOLE,0x3a143a, 0xe3e29f,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
@@ -86,6 +83,14 @@ public class ModItems {
 
     public static final RegistryObject<Item> SP_SPAWN_EGG = ITEMS.register("sp_spawn_egg",
             () -> new ForgeSpawnEggItem(EntityInit.SP,0xCB8B16, 0xDDCE17,
+                    new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
+
+    public static final RegistryObject<Item> GUARD_SPAWN_EGG = ITEMS.register("guard_spawn_egg",
+            () -> new ForgeSpawnEggItem(EntityInit.GUARD,0xCB8B16, 0xDDCE17,
+                    new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
+
+    public static final RegistryObject<Item> F_SPAWN_EGG = ITEMS.register("f_spawn_egg",
+            () -> new ForgeSpawnEggItem(EntityInit.FRANCOIS,0xCB8B16, 0xDDCE17,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> FURRY_SPAWN_EGG = ITEMS.register("furry_spawn_egg",

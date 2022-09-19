@@ -1,17 +1,20 @@
-package com.frogniche.nichesmobs.item.custom.geomancy_hammer;
+package com.frogniche.nichesmobs.item.custom.whip;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.minecraftforge.network.PacketDistributor;
@@ -33,23 +36,21 @@ import software.bernie.geckolib3.util.GeckoLibUtil;
 
 import java.util.function.Consumer;
 
-import static software.bernie.example.item.PistolItem.ANIM_OPEN;
-
-public class GeomancyHammerItem extends Item implements IAnimatable, ISyncable {
-    private static final String CONTROLLER_NAME = "controller";
-
+public class Corrupted_Whip extends SwordItem implements IAnimatable, ISyncable {
+    private static final String CONTROLLER_NAME = "WhipController";
+    private static final int ANIM_OPEN = 0;
     public AnimationFactory factory = new AnimationFactory(this);
 
-    public GeomancyHammerItem(Properties properties) {
-        super(properties.tab(GeckoLibMod.geckolibItemGroup));
-        GeckoLibNetwork.registerSyncable(this);
+    public Corrupted_Whip(Tier p_43269_, int p_43270_, float p_43271_, Properties p_43272_) {
+        super(p_43269_, p_43270_, p_43271_, p_43272_);
     }
+
 
     @Override
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
         super.initializeClient(consumer);
         consumer.accept(new IClientItemExtensions() {
-            private final BlockEntityWithoutLevelRenderer renderer = new GeomancyHammerRenderer();
+            private final BlockEntityWithoutLevelRenderer renderer = new WhipRenderer();
 
             @Override
             public BlockEntityWithoutLevelRenderer getCustomRenderer() {
@@ -77,14 +78,14 @@ public class GeomancyHammerItem extends Item implements IAnimatable, ISyncable {
     }
 
     private <ENTITY extends IAnimatable> void soundListener(SoundKeyframeEvent<ENTITY> event) {
-        // The animation for the GeomancyHammerItem has a sound keyframe at time 0:00.
+        // The animation for the JackInTheBoxItem has a sound keyframe at time 0:00.
         // As soon as that keyframe gets hit this method fires and it starts playing the
         // sound to the current player.
         // The music is synced with the animation so the box opens as soon as the music
         // plays the box opening sound
         LocalPlayer player = Minecraft.getInstance().player;
         if (player != null) {
-            player.playSound(SoundEvents.ALLAY_THROW, 1, 1);
+            player.playSound(SoundRegistry.JACK_MUSIC.get(), 1, 1);
         }
     }
 
@@ -96,10 +97,10 @@ public class GeomancyHammerItem extends Item implements IAnimatable, ISyncable {
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         if (!world.isClientSide) {
-            // Gets the item that the player is holding, should be a GeomancyHammerItem
+            // Gets the item that the player is holding, should be a JackInTheBoxItem
             final ItemStack stack = player.getItemInHand(hand);
             final int id = GeckoLibUtil.guaranteeIDForStack(stack, (ServerLevel) world);
-            // Tell all nearby clients to trigger this GeomancyHammerItem
+            // Tell all nearby clients to trigger this JackInTheBoxItem
             final PacketDistributor.PacketTarget target = PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player);
             GeckoLibNetwork.syncAnimation(target, this, id, ANIM_OPEN);
         }
@@ -116,14 +117,15 @@ public class GeomancyHammerItem extends Item implements IAnimatable, ISyncable {
             if (controller.getAnimationState() == AnimationState.Stopped) {
                 final LocalPlayer player = Minecraft.getInstance().player;
                 if (player != null) {
-                    // If you don't do this, the popup animation will only play once because the
-                    // animation will be cached.
-                    controller.markNeedsReload();
-                    // Set the animation to open the GeomancyHammerItem which will start playing music
-                    // and
-                    // eventually do the actual animation. Also sets it to not loop
-                    controller.setAnimation(new AnimationBuilder().addAnimation("hammer.swing", false));
+                    player.displayClientMessage(Component.literal("Whipping Memcy Right now!"), true);
                 }
+                // If you don't do this, the popup animation will only play once because the
+                // animation will be cached.
+                controller.markNeedsReload();
+                // Set the animation to open the JackInTheBoxItem which will start playing music
+                // and
+                // eventually do the actual animation. Also sets it to not loop
+                controller.setAnimation(new AnimationBuilder().addAnimation("animation.whip.whuppin", false));
             }
         }
     }

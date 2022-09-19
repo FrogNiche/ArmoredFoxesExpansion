@@ -1,6 +1,8 @@
 package com.frogniche.nichesmobs.entity.wolfie;
 import com.frogniche.nichesmobs.effect.ModEffects;
 import com.frogniche.nichesmobs.entity.EntityInit;
+import com.frogniche.nichesmobs.entity.furry.FurryEntity;
+import com.frogniche.nichesmobs.entity.sp.SPEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -44,11 +46,11 @@ public class WolfieEntity extends Monster implements IAnimatable {
 
     public static final AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 20)
+                .add(Attributes.MAX_HEALTH, 40)
                 .add(Attributes.MOVEMENT_SPEED, 0.23d)
                 .add(Attributes.ATTACK_DAMAGE, 9)
                 .add(Attributes.ARMOR, 21)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 2).build();
+                .add(Attributes.KNOCKBACK_RESISTANCE, 4).build();
 
     }
 
@@ -76,6 +78,11 @@ public class WolfieEntity extends Monster implements IAnimatable {
         });
         this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, IronGolem.class, true) {
         });
+        this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, FurryEntity.class, false) {
+        });
+
+        this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, SPEntity.class, false) {
+        });
         this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8f) {
         });
         this.goalSelector.addGoal(10, new RandomStrollGoal(this, 1f) {
@@ -89,7 +96,7 @@ public class WolfieEntity extends Monster implements IAnimatable {
             return true;
         } else {
             if (opfer instanceof LivingEntity) {
-                ((LivingEntity)opfer).addEffect(new MobEffectInstance(MobEffects.DARKNESS,100), this);
+                ((LivingEntity)opfer).addEffect(new MobEffectInstance(ModEffects.FREEZE.get(),100), this);
             }
         }
         return true;

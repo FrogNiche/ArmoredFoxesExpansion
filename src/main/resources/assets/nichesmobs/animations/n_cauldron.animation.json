@@ -131,7 +131,7 @@
 				}
 			}
 		},
-		"animation.n_cauldron.attack2": {
+		"animation.n_cauldron.attack": {
 			"loop": true,
 			"animation_length": 1.9167,
 			"bones": {

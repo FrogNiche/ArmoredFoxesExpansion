@@ -2,6 +2,8 @@ package com.frogniche.nichesmobs.entity.furry;
 
 import com.frogniche.nichesmobs.effect.ModEffects;
 import com.frogniche.nichesmobs.entity.EntityInit;
+import com.frogniche.nichesmobs.entity.sp.SPEntity;
+import com.frogniche.nichesmobs.entity.wolfie.WolfieEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -38,7 +40,7 @@ public class FurryEntity extends Monster implements IAnimatable {
                 .add(Attributes.MAX_HEALTH, 20)
                 .add(Attributes.MOVEMENT_SPEED, 0.23d)
                 .add(Attributes.ATTACK_DAMAGE, 9)
-                .add(Attributes.ARMOR, 21)
+                .add(Attributes.ARMOR, 10)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 2).build();
 
     }
@@ -66,6 +68,10 @@ public class FurryEntity extends Monster implements IAnimatable {
         this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, Monster.class, true) {
         });
         this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, IronGolem.class, true) {
+        });
+        this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, SPEntity.class, false) {
+        });
+        this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, WolfieEntity.class, false) {
         });
         this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8f) {
         });

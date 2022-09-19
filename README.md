@@ -34,10 +34,10 @@ Example:
 
 1. Having GeckoLib **without** PlayerAnimator will cause crashes.
 2. Having PlayerAnimator **without** GeckoLib will 
-crash even more than PlayerAnimator.
+have more errors than PlayerAnimator.
  
 ## **Developed by:**
-1. **Frog Niche**(Author of the mod, coder and Model/Animator developer of the mod's mobs.)
+1. **Frog Niche**(Author of the mod, mod's coder and Model/Animator developer of the mod's mobs.)
 2. **Bretzelfresser**(Mod's coder.)
 3. **MemcyCraft**(Model developer.)
 4. **MaxyTurtle**(Beta Tester)

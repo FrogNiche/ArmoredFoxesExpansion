@@ -1,12 +1,18 @@
-package com.frogniche.nichesmobs.entity.undead_executioner;
+package com.frogniche.nichesmobs.entity.guard;
 
 import com.frogniche.nichesmobs.entity.EntityInit;
+import com.frogniche.nichesmobs.entity.furry.FurryEntity;
+import com.frogniche.nichesmobs.entity.sp.SPEntity;
+import com.frogniche.nichesmobs.entity.wolfie.WolfieEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
@@ -27,87 +33,90 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
+public class GuardEntity extends Monster implements IAnimatable {
 
-public class Undead_ExecutionerEntity extends Monster implements IAnimatable {
-
-    public static final AttributeSupplier createAttributes(){
+    public static final AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 31)
-                .add(Attributes.MOVEMENT_SPEED, 0.25d)
-                .add(Attributes.ATTACK_DAMAGE, 18)
-                .add(Attributes.ARMOR, 21)
+                .add(Attributes.MAX_HEALTH, 20)
+                .add(Attributes.MOVEMENT_SPEED, 0.23d)
+                .add(Attributes.ATTACK_DAMAGE, 9)
+                .add(Attributes.ARMOR, 10)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 2).build();
 
     }
-    public static final String CONTROLLER_NAME = "controller";
-
 
     private AnimationFactory factory = new AnimationFactory(this);
 
-    public Undead_ExecutionerEntity(EntityType<Undead_ExecutionerEntity> type, Level world){
+    public static final String CONTROLLER_NAME = "controller";
+
+
+    public GuardEntity(EntityType<GuardEntity> type, Level world) {
         super(type, world);
     }
 
-    protected Undead_ExecutionerEntity(Level world){
-        this(EntityInit.UNDEAD_EXECUTIONER.get(), world);
+    protected GuardEntity(Level world) {
+        this(EntityInit.GUARD.get(), world);
     }
 
     @Override
     protected void registerGoals() {
         super.registerGoals();
-        this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1.1d, false){
-
+        this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1.1d, false) {
         });
-        this.goalSelector.addGoal(1, new NearestAttackableTargetGoal(this, Player.class, true){
-
+        this.goalSelector.addGoal(1, new NearestAttackableTargetGoal(this, Player.class, true) {
         });
-        this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, Monster.class, true){
-
+        this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, Monster.class, true) {
         });
-        this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, IronGolem.class, true){
+        this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, IronGolem.class, true) {
         });
-        this.goalSelector.addGoal(4, new LookAtPlayerGoal(this,Player.class, 8f){
-
+        this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, SPEntity.class, false) {
         });
-        this.goalSelector.addGoal(10, new RandomStrollGoal(this, 1f){
-
+        this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, WolfieEntity.class, false) {
+        });
+        this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, FurryEntity.class, false) {
+        });
+        this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8f) {
+        });
+        this.goalSelector.addGoal(10, new RandomStrollGoal(this, 1f) {
         });
     }
 
-    {
-    }
     @Override
     public boolean doHurtTarget(Entity opfer) {
         if(super.doHurtTarget(opfer)){
             this.level.broadcastEntityEvent(this, (byte)10);
             return true;
+        } else {
+            if (opfer instanceof LivingEntity) {
+                ((LivingEntity)opfer).addEffect(new MobEffectInstance(MobEffects.DARKNESS,100), this);
+            }
         }
-        return false;
+        return true;
     }
 
     @Override
     public void handleEntityEvent(byte id) {
         if (id == 10) {
-            AnimationController<Undead_ExecutionerEntity> controller = GeckoLibUtil.getControllerForID(this.factory, this.getId(), CONTROLLER_NAME);
-            controller.setAnimation(new AnimationBuilder().addAnimation("animation.undead_executioner.attack"));
+            AnimationController<GuardEntity> controller = GeckoLibUtil.getControllerForID(this.factory, this.getId(), CONTROLLER_NAME);
+            controller.setAnimation(new AnimationBuilder().addAnimation("animation.royal_guard.attack"));
         } else
             super.handleEntityEvent(id);
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.undead_executioner.walk", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.royal_guard.walk", true));
             return PlayState.CONTINUE;
         }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.undead_executioner.idle", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.royal_guard.stiffy", true));
         return PlayState.CONTINUE;
     }
 
     private PlayState attackPredicate(AnimationEvent event) {
         if(this.swinging && event.getController().getAnimationState().equals(AnimationState.Stopped)) {
             event.getController().markNeedsReload();
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.undead_executioner.attack", false));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.royal_guard.attack", false));
             this.swinging = false;
         }
 
@@ -145,3 +154,4 @@ public class Undead_ExecutionerEntity extends Monster implements IAnimatable {
         return 0.2F;
     }
 }
+

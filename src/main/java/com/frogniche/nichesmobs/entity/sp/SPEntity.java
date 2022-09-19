@@ -49,7 +49,7 @@ public class SPEntity extends Monster implements IAnimatable {
             BossEvent.BossBarColor.YELLOW, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
     public static final AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 20)
+                .add(Attributes.MAX_HEALTH, 350)
                 .add(Attributes.MOVEMENT_SPEED, 0.23d)
                 .add(Attributes.ATTACK_DAMAGE, 9)
                 .add(Attributes.ARMOR, 21)
@@ -99,7 +99,7 @@ public class SPEntity extends Monster implements IAnimatable {
             return true;
         } else {
             if (opfer instanceof LivingEntity) {
-                ((LivingEntity)opfer).addEffect(new MobEffectInstance(MobEffects.DARKNESS,100), this);
+                ((LivingEntity)opfer).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,100), this);
             }
         }
         return true;
@@ -141,7 +141,7 @@ public class SPEntity extends Monster implements IAnimatable {
             return PlayState.CONTINUE;
         }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.sp.idle", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.sp.sitting", true));
         return PlayState.CONTINUE;
     }
 

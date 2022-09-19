@@ -12,8 +12,11 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -73,25 +76,26 @@ public class WavyGeo extends Monster implements IAnimatable {
     @Override
     protected void registerGoals() {
         super.registerGoals();
-        this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1.1d, false){
+        this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1.1d, false) {
 
         });
-        this.goalSelector.addGoal(1, new NearestAttackableTargetGoal(this, Player.class, true){
-
-        });
-
-        this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, Monster.class, true){
+        this.goalSelector.addGoal(1, new NearestAttackableTargetGoal(this, Player.class, true) {
 
         });
 
-        this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, Monster.class, true){
+        this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, Monster.class, true) {
 
         });
-        this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, IronGolem.class, true){
+
+        this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, Monster.class, true) {
+
+        });
+        this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, IronGolem.class, true) {
         });
 
-        this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, Villager.class, true){
+        this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, Villager.class, true) {
         });
+
         this.goalSelector.addGoal(10, new RandomStrollGoal(this, 1f){
         });
     }
@@ -121,11 +125,14 @@ public class WavyGeo extends Monster implements IAnimatable {
     @Override
     public boolean doHurtTarget(Entity opfer) {
         if(super.doHurtTarget(opfer)){
-            AnimationController<WavyGeo> controller = GeckoLibUtil.getControllerForID(this.factory, this.getId(), CONTROLLER_NAME);
-            controller.setAnimation(new AnimationBuilder().addAnimation("animation.wavy.attack1"));
+            this.level.broadcastEntityEvent(this, (byte)10);
             return true;
+        } else {
+            if (opfer instanceof LivingEntity) {
+                ((LivingEntity)opfer).addEffect(new MobEffectInstance(MobEffects.LEVITATION,100), this);
+            }
         }
-        return false;
+        return true;
     }
 
     @Override
