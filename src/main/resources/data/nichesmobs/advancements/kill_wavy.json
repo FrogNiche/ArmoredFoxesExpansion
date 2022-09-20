@@ -1,0 +1,25 @@
+{
+  "display": {
+    "icon": {
+      "item": "nichesmobs:geomancy_hammer"
+    },
+    "title": {
+      "translate": "advancements.nichesmobs.kill_wavy.title"
+    },
+    "description": {
+      "translate": "advancements.nichesmobs.kill_wavy.description"
+    },
+    "frame": "challenge"
+  },
+  "parent": "nichesmobs:root",
+  "criteria": {
+    "wavy": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "nichesmobs:wavy"
+        }
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 {
   "pools": [
     {
-      "name": "snow_mole",
+      "name": "wavy",
       "rolls": 1,
       "conditions": [
         {
@@ -13,7 +13,7 @@
       "entries": [
         {
           "type": "item",
-          "name": "nichesmobs:mf",
+          "name": "nichesmobs:geomancy_hammer",
           "weight": 1
         }
       ]

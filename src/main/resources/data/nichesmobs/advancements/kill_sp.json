@@ -1,0 +1,25 @@
+{
+  "display": {
+    "icon": {
+      "item": "nichesmobs:tasty_bone"
+    },
+    "title": {
+      "translate": "advancements.nichesmobs.kill_sp.title"
+    },
+    "description": {
+      "translate": "advancements.nichesmobs.kill_sp.description"
+    },
+    "frame": "challenge"
+  },
+  "parent": "nichesmobs:root",
+  "criteria": {
+    "sp": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "nichesmobs:sp"
+        }
+      }
+    }
+  }
+}

@@ -4,6 +4,7 @@ import com.frogniche.nichesmobs.NichesMobs;
 import com.frogniche.nichesmobs.entity.EntityInit;
 import com.frogniche.nichesmobs.item.custom.*;
 import com.frogniche.nichesmobs.item.custom.whip.Corrupted_Whip;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -44,7 +45,7 @@ public class ModItems {
             () -> new PickaxeItem(Tiers.NETHERITE, 1, -2.8F,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB).fireResistant()));
 
-    public static final RegistryObject<Item> LOGO = ITEMS.register("logo",
+    public static final RegistryObject<Item> XX12CH = ITEMS.register("xx12ch",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_SEARCH)));
 
     public static final RegistryObject<Item> SOUL_GAUNTLET = ITEMS.register("soul_gauntlet",
@@ -52,6 +53,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> MF = ITEMS.register("mf",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
+
+    public static final RegistryObject<Item> PLATE = ITEMS.register("plate",
+            () -> new ItemFrameItem(EntityType.ITEM_FRAME, (new Item.Properties()).tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> WOLFIE_SPAWN_EGG = ITEMS.register("wolfie_spawn_egg",
             () -> new ForgeSpawnEggItem(EntityInit.WOLFIE,0xF3E8DD, 0xD3D3D3,
@@ -86,11 +90,11 @@ public class ModItems {
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> GUARD_SPAWN_EGG = ITEMS.register("guard_spawn_egg",
-            () -> new ForgeSpawnEggItem(EntityInit.GUARD,0xCB8B16, 0xDDCE17,
+            () -> new ForgeSpawnEggItem(EntityInit.GUARD,0xe49a3, 0xf8d73b,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> F_SPAWN_EGG = ITEMS.register("f_spawn_egg",
-            () -> new ForgeSpawnEggItem(EntityInit.FRANCOIS,0xCB8B16, 0xDDCE17,
+            () -> new ForgeSpawnEggItem(EntityInit.FRANCOIS,0xfbe9e7, 0xef6c00,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> FURRY_SPAWN_EGG = ITEMS.register("furry_spawn_egg",

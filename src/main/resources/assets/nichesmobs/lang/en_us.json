@@ -13,6 +13,9 @@
   "item.nichesmobs.e_t_spawn_egg": "End-Tadpole Spawn Egg",
   "item.nichesmobs.e_frog_spawn_egg": "End-Frog Spawn Egg",
   "item.nichesmobs.nightmares_fangs": "Nightmare's Fangs",
+  "item.nichesmobs.f_spawn_egg": "François the Great-Cook Spawn Egg",
+  "item.nichesmobs.guard_spawn_egg": "Royal Guard Spawn Egg",
+  "item.nichesmobs.plate": "Plate",
 
   "itemGroup.nichestab": "Niche's Mobs",
 
@@ -25,6 +28,8 @@
   "item.nichesmobs.soul_gauntlet": "Soul-Gauntlet",
   "_comment": "Entities",
   "entity.nichesmobs.snow_mole": "Snow Mole",
+  "entity.nichesmobs.francois": "François the Great-Cook",
+  "entity.nichesmobs.guard": "Royal Guard",
   "entity.nichesmobs.sp": "Spectacular Paws",
   "entity.nichesmobs.wolfie": "Wolfie the Elite Commander",
   "entity.nichesmobs.furry": "Furry the Supreme General",
@@ -33,5 +38,13 @@
   "entity.nichesmobs.n_cauldron": "Netherite-Cauldron",
   "entity.nichesmobs.wavy_geo": "Wavy The Geomancy Master",
   "_comment": "Effects",
-  "effect.nichesmobs.freeze": "Freeze"
+  "effect.nichesmobs.freeze": "Freeze",
+  "_comment": "Advancements",
+  "advancements.nichesmobs.kill_sp.title": "No more Rare Foxes ever again!",
+  "advancements.nichesmobs.kill_wolfie.title": "A Rare-White Fox down...",
+  "advancements.nichesmobs.kill_wavy.title": "The Next Geomancy Master...",
+  "_comment": "Advancements Description",
+  "advancements.nichesmobs.kill_sp.description": "Kill Spectacular Paws!",
+  "advancements.nichesmobs.kill_wolfie.description": "Kill Wolfie",
+  "advancements.nichesmobs.kill_wavy.description": "Kill Wavy!"
 }

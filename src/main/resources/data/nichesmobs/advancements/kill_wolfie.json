@@ -1,0 +1,24 @@
+{
+  "display": {
+    "icon": {
+      "item": "nichesmobs:ice_hammer"
+    },
+    "title": {
+      "translate": "advancements.nichesmobs.kill_wolfie.title"
+    },
+    "description": {
+      "translate": "advancements.nichesmobs.kill_wolfie.description"
+    }
+  },
+  "parent": "nichesmobs:root",
+  "criteria": {
+    "wolfie": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "nichesmobs:wolfie"
+        }
+      }
+    }
+  }
+}

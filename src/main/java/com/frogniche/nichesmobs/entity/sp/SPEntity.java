@@ -1,6 +1,7 @@
 package com.frogniche.nichesmobs.entity.sp;
 
 import com.frogniche.nichesmobs.entity.EntityInit;
+import com.frogniche.nichesmobs.entity.wolfie.WolfieEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerBossEvent;
@@ -78,6 +79,9 @@ public class SPEntity extends Monster implements IAnimatable {
         });
         this.goalSelector.addGoal(1, new NearestAttackableTargetGoal(this, Player.class, true) {
         });
+
+        this.goalSelector.addGoal(1, new NearestAttackableTargetGoal(this, WolfieEntity.class, false) {
+        });
         this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, Monster.class, true) {
         });
         this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, IronGolem.class, true) {
@@ -90,6 +94,7 @@ public class SPEntity extends Monster implements IAnimatable {
                 return super.canUse() && !isSleeping();
             }
         });
+
     }
 
     @Override
@@ -117,6 +122,7 @@ public class SPEntity extends Monster implements IAnimatable {
             }
             bossBar.setProgress(this.getHealth() / this.getMaxHealth());
         }
+
     }
 
     @Override
@@ -124,6 +130,8 @@ public class SPEntity extends Monster implements IAnimatable {
         if (this.isSleeping() && source.getEntity() != null)
             this.entityData.set(Sleeping, false);
         return super.hurt(source, damage);
+
+
     }
 
     @Override
@@ -186,6 +194,8 @@ public class SPEntity extends Monster implements IAnimatable {
     public AnimationFactory getFactory() {
         return factory;
     }
+
+
     public boolean isSleeping() {
         return this.entityData.get(Sleeping);
     }

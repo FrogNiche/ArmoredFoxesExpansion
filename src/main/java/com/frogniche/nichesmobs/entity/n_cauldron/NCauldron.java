@@ -1,5 +1,6 @@
 package com.frogniche.nichesmobs.entity.n_cauldron;
 
+import com.frogniche.nichesmobs.entity.guard.GuardEntity;
 import com.frogniche.nichesmobs.entity.sp.SPEntity;
 import net.minecraft.client.gui.screens.social.PlayerSocialManager;
 import net.minecraft.nbt.CompoundTag;
@@ -56,8 +57,12 @@ public class NCauldron extends AmbientCreature implements IAnimatable {
             ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.RED,
             BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(false);
 
-    public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 400);
+    public static final AttributeSupplier createAttributes() {
+        return Monster.createMonsterAttributes()
+                .add(Attributes.MAX_HEALTH, 400)
+                .add(Attributes.ATTACK_DAMAGE, 9)
+                .add(Attributes.ARMOR, 50)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 100).build();
     }
 
     private AnimationFactory factory = new AnimationFactory(this);
@@ -82,17 +87,34 @@ public class NCauldron extends AmbientCreature implements IAnimatable {
     @Override
     public void handleEntityEvent(byte id) {
         if (id == 10) {
-            AnimationController<SPEntity> controller = GeckoLibUtil.getControllerForID(this.factory, this.getId(), CONTROLLER_NAME);
+            AnimationController<GuardEntity> controller = GeckoLibUtil.getControllerForID(this.factory, this.getId(), CONTROLLER_NAME);
             controller.setAnimation(new AnimationBuilder().addAnimation("animation.n_cauldron.attack"));
         } else
             super.handleEntityEvent(id);
     }
 
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.n_cauldron.sleep", true));
-        return PlayState.CONTINUE;
-    }
+     private PlayState predicate(AnimationEvent<NCauldron> event){
+        if (awakeTickCounter > 0){
+            awakeTickCounter--;
+            return PlayState.CONTINUE;
+        }
+        if (entityData.get(SLEEP)){
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.n_cauldron.sleep", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation(
+                    "animation.n_cauldron.sleep", true));
+            return PlayState.CONTINUE;
+        }
+        if (!entityData.get(SLEEP) && entityData.get(WAS_SLEEP) && this.awakeTickCounter <= 0){
+            this.awakeTickCounter = (int) (20f*3.125f);
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.n_cauldron.awake"));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation(
+                    "animation.n_cauldron.awake"));
+            this.entityData.set(WAS_SLEEP, false);
+            return PlayState.CONTINUE;
+        }
+         event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.n_cauldron.idle", true));
+         return PlayState.CONTINUE;
+     }
 
     private PlayState attackPredicate(AnimationEvent event) {
         if(this.swinging && event.getController().getAnimationState().equals(AnimationState.Stopped)) {
@@ -110,6 +132,7 @@ public class NCauldron extends AmbientCreature implements IAnimatable {
         data.addAnimationController(new AnimationController(this, "attackController",
                 0, this::attackPredicate));
     }
+
 
     @Override
     protected void defineSynchedData() {
@@ -129,7 +152,7 @@ public class NCauldron extends AmbientCreature implements IAnimatable {
         p_147243_ = event.getRatioZ();
         v *= 1.0D - this.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
         if (!(v <= 0.0D)) {
-            this.hasImpulse = true;
+            this.hasImpulse = false;
             Vec3 vec3 = this.getDeltaMovement();
             Vec3 vec31 = (new Vec3(p_147242_, 0.0D, p_147243_)).normalize().scale(v);
             this.setDeltaMovement(vec3.x / 2.0D - vec31.x, vec3.y, vec3.z /
@@ -181,6 +204,7 @@ public class NCauldron extends AmbientCreature implements IAnimatable {
         }
         this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
     }
+
 
     @Override
     public AnimationFactory getFactory() {

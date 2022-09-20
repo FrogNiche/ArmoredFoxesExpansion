@@ -1,3 +1,22 @@
 {
-  "type": "minecraft:entity"
+  "pools": [
+    {
+      "name": "ice_hammer",
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "random_chance_with_looting",
+          "chance": 1.000,
+          "looting_multiplier": 0.2
+        }
+      ],
+      "entries": [
+        {
+          "type": "item",
+          "name": "nichesmobs:ice_hammer",
+          "weight": 1
+        }
+      ]
+    }
+  ]
 }

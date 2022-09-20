@@ -7,7 +7,7 @@ public class ModCreativeModeTab {
     public static final CreativeModeTab NICHES_TAB = new CreativeModeTab("nichestab") {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(ModItems.LOGO.get());
+            return new ItemStack(ModItems.XX12CH.get());
         }
     };
 }

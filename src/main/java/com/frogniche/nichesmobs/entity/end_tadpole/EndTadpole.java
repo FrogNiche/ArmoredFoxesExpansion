@@ -36,7 +36,6 @@ public class EndTadpole extends AbstractFish implements IAnimatable {
     public static final AttributeSupplier.Builder createAttributes() {
         return Animal.createMobAttributes().add(Attributes.MAX_HEALTH, 5)
                 .add(Attributes.MOVEMENT_SPEED, 1d)
-                .add(Attributes.MOVEMENT_SPEED, 0.3d)
                 .add(Attributes.ARMOR, 3d);
     }
 
@@ -49,6 +48,8 @@ public class EndTadpole extends AbstractFish implements IAnimatable {
                 6.0F, 1.0D, 1.2D));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this) {
         });
+
+
         this.targetSelector.addGoal(6, (new HurtByTargetGoal(this)).setAlertOthers());
 
     }

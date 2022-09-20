@@ -104,7 +104,7 @@ public class NichesMobs
         event.put(EntityInit.UD.get(), UDEntity.createAttributes());
         event.put(EntityInit.UNDEAD_EXECUTIONER.get(), Undead_ExecutionerEntity.createAttributes());
         event.put(EntityInit.WAVY_GEO.get(), WavyGeo.createAttributes());
-        event.put(EntityInit.N_CAUDRON.get(), NCauldron.createAttributes().build());
+        event.put(EntityInit.N_CAUDRON.get(), NCauldron.createAttributes());
     }
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class ClientModEvents

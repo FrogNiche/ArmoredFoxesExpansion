@@ -22,7 +22,7 @@ public class PlayerAnimationTrigger {
     @SubscribeEvent
     public static void onChatReceived(ClientChatReceivedEvent event) {
         //Test if it is a player (main or other) and the message
-        if (!event.getPlayerChatMessage().signer().isSystem() && event.getPlayerChatMessage().signedContent().plain().equals("waving")) {
+        if (!event.getPlayerChatMessage().signer().isSystem() && event.getPlayerChatMessage().signedContent().plain().equals("hello")) {
 
 
             //Get the player from Minecraft, using the chat profile ID. From network packets, you'll receive entity IDs instead of UUIDs
