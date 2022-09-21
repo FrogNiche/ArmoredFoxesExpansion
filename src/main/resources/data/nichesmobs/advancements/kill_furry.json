@@ -1,0 +1,24 @@
+{
+  "display": {
+    "icon": {
+      "item": "nichesmobs:corrupted_whip"
+    },
+    "title": {
+      "translate": "advancements.nichesmobs.kill_furry.title"
+    },
+    "description": {
+      "translate": "advancements.nichesmobs.kill_furry.description"
+    }
+  },
+  "parent": "nichesmobs:root",
+  "criteria": {
+    "wolfie": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "nichesmobs:furry"
+        }
+      }
+    }
+  }
+}

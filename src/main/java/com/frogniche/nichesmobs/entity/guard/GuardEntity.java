@@ -2,6 +2,7 @@ package com.frogniche.nichesmobs.entity.guard;
 
 import com.frogniche.nichesmobs.entity.EntityInit;
 import com.frogniche.nichesmobs.entity.furry.FurryEntity;
+import com.frogniche.nichesmobs.entity.n_cauldron.NCauldron;
 import com.frogniche.nichesmobs.entity.sp.SPEntity;
 import com.frogniche.nichesmobs.entity.wolfie.WolfieEntity;
 import net.minecraft.core.BlockPos;
@@ -37,7 +38,7 @@ public class GuardEntity extends Monster implements IAnimatable {
 
     public static final AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 20)
+                .add(Attributes.MAX_HEALTH, 60)
                 .add(Attributes.MOVEMENT_SPEED, 0.23d)
                 .add(Attributes.ATTACK_DAMAGE, 9)
                 .add(Attributes.ARMOR, 10)
@@ -97,7 +98,7 @@ public class GuardEntity extends Monster implements IAnimatable {
     @Override
     public void handleEntityEvent(byte id) {
         if (id == 10) {
-            AnimationController<GuardEntity> controller = GeckoLibUtil.getControllerForID(this.factory, this.getId(), CONTROLLER_NAME);
+            AnimationController<NCauldron> controller = GeckoLibUtil.getControllerForID(this.factory, this.getId(), CONTROLLER_NAME);
             controller.setAnimation(new AnimationBuilder().addAnimation("animation.royal_guard.attack"));
         } else
             super.handleEntityEvent(id);

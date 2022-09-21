@@ -1,12 +1,12 @@
 {
   "pools": [
     {
-      "name": "wavy",
+      "name": "wavy_geo",
       "rolls": 1,
       "conditions": [
         {
           "condition": "random_chance_with_looting",
-          "chance": 0.333,
+          "chance": 1.350,
           "looting_multiplier": 0.2
         }
       ],

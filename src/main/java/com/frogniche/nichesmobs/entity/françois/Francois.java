@@ -37,7 +37,7 @@ public class Francois extends Animal implements IAnimatable {
 
     // sorry about the caps.
     public static final AttributeSupplier.Builder createAttributes(){
-        return Animal.createMobAttributes().add(Attributes.MAX_HEALTH, 10)
+        return Animal.createMobAttributes().add(Attributes.MAX_HEALTH, 70)
                 .add(Attributes.MOVEMENT_SPEED, 1d)
                 .add(Attributes.MOVEMENT_SPEED, 0.25d)
                 .add(Attributes.ARMOR, 5d);
@@ -62,6 +62,8 @@ public class Francois extends Animal implements IAnimatable {
 
         });
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this){
+
+
 
         });
         this.targetSelector.addGoal(6, (new HurtByTargetGoal(this)).setAlertOthers());

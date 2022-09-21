@@ -42,9 +42,16 @@
   "_comment": "Advancements",
   "advancements.nichesmobs.kill_sp.title": "No more Rare Foxes ever again!",
   "advancements.nichesmobs.kill_wolfie.title": "A Rare-White Fox down...",
-  "advancements.nichesmobs.kill_wavy.title": "The Next Geomancy Master...",
+  "advancements.nichesmobs.kill_furry.title": "That strange-orange animal with a whip?...",
+  "advancements.nichesmobs.kill_wavy_geo.title": "The Next Geomancy Master...",
+  "advancements.nichesmobs.root.title": "Niche's Mobs",
+  "advancements.nichesmobs.kill_cauldron.title": "Was that Cauldron evil??",
   "_comment": "Advancements Description",
   "advancements.nichesmobs.kill_sp.description": "Kill Spectacular Paws!",
+  "advancements.nichesmobs.root.title": "Niche's Mobs",
   "advancements.nichesmobs.kill_wolfie.description": "Kill Wolfie",
-  "advancements.nichesmobs.kill_wavy.description": "Kill Wavy!"
+  "advancements.nichesmobs.kill_wavy_geo.description": "Kill Wavy!",
+  "advancements.nichesmobs.kill_furry.description": "Kill Furry",
+  "advancements.nichesmobs.root.description": "Niche's Mobs",
+  "advancements.nichesmobs.kill_cauldron.description": "Kill The Netherite-Cauldron"
 }

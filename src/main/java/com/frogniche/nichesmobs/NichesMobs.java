@@ -5,6 +5,8 @@ import com.frogniche.nichesmobs.entity.badger.crimsom_badger.CrimsomBadger;
 import com.frogniche.nichesmobs.entity.badger.crimsom_badger.CrimsomBadgerRenderer;
 import com.frogniche.nichesmobs.entity.badger.warped_badger.WarpedBadger;
 import com.frogniche.nichesmobs.entity.badger.warped_badger.WarpedBadgerRenderer;
+import com.frogniche.nichesmobs.entity.cauldron.Cauldron;
+import com.frogniche.nichesmobs.entity.cauldron.CauldronRenderer;
 import com.frogniche.nichesmobs.entity.end_frog.EndFrog;
 import com.frogniche.nichesmobs.entity.end_frog.EndFrogRenderer;
 import com.frogniche.nichesmobs.entity.end_tadpole.EndTadpole;
@@ -89,6 +91,7 @@ public class NichesMobs
         EntityRenderers.register(EntityInit.UD.get(), UDRenderer::new);
         EntityRenderers.register(EntityInit.UNDEAD_EXECUTIONER.get(), Undead_ExecutionerRenderer::new);
         EntityRenderers.register(EntityInit.N_CAUDRON.get(), NCauldronRenderer::new);
+        EntityRenderers.register(EntityInit.CAULDRON.get(), NCauldronRenderer::new);
     }
     private void registerEntityAttributes(EntityAttributeCreationEvent event){
         event.put(EntityInit.SNOW_MOLE.get(), EntitySnowMole.createAttributes().build());
@@ -105,6 +108,7 @@ public class NichesMobs
         event.put(EntityInit.UNDEAD_EXECUTIONER.get(), Undead_ExecutionerEntity.createAttributes());
         event.put(EntityInit.WAVY_GEO.get(), WavyGeo.createAttributes());
         event.put(EntityInit.N_CAUDRON.get(), NCauldron.createAttributes());
+        event.put(EntityInit.CAULDRON.get(), Cauldron.createAttributes());
     }
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class ClientModEvents

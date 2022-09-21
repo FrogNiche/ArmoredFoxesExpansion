@@ -1,4 +1,5 @@
 package com.frogniche.nichesmobs.entity.wavy;
+import com.frogniche.nichesmobs.ai.AvoidProjectilesGoal;
 import com.frogniche.nichesmobs.entity.EntityInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -32,6 +33,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -155,27 +157,45 @@ public class WavyGeo extends Monster implements IAnimatable {
         super.readAdditionalSaveData(tag);
         this.entityData.set(SLEEP, tag.getBoolean("sleeping"));
     }
+    
 
-    private PlayState predicate(AnimationEvent event){
-        if(event.getController().getCurrentAnimation() != null && event.getController().getCurrentAnimation().animationName.equals("animation.sculk_golem.attack"))
-            return PlayState.CONTINUE;
-
-        if (isSleeping()){
+       /* if (isSleeping()){
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.wavy.sleep", true));
-            return PlayState.CONTINUE;
-        }
+            return PlayState.CONTINUE;*/
+       @Override
+       public void handleEntityEvent(byte id) {
+           if (id == 10) {
+               AnimationController<WavyGeo> controller = GeckoLibUtil.getControllerForID(this.factory, this.getId(), CONTROLLER_NAME);
+               controller.setAnimation(new AnimationBuilder().addAnimation("animation.wavy.attack1"));
+           } else
+               super.handleEntityEvent(id);
+       }
+
+    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.wavy.walk", true));
             return PlayState.CONTINUE;
         }
+
         event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.wavy.idle", true));
         return PlayState.CONTINUE;
-
     }
 
+    private PlayState attackPredicate(AnimationEvent event) {
+        if(this.swinging && event.getController().getAnimationState().equals(AnimationState.Stopped)) {
+            event.getController().markNeedsReload();
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.wavy.attack1", false));
+            this.swinging = false;
+        }
+
+        return PlayState.CONTINUE;
+    }
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, CONTROLLER_NAME, 14, this::predicate));
+        data.addAnimationController(new AnimationController(this, "controller",
+                0, this::predicate));
+        data.addAnimationController(new AnimationController(this, "attackController",
+                0, this::attackPredicate));
     }
 
     @Override

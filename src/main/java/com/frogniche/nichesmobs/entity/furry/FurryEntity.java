@@ -133,7 +133,7 @@ public class FurryEntity extends Monster implements IAnimatable {
     }
 
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(SoundEvents.IRON_GOLEM_STEP, 0.15F, 1.0F);
+        this.playSound(SoundEvents.FOX_SNIFF, 0.15F, 1.0F);
     }
 
     protected SoundEvent getAmbientSound() {

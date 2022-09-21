@@ -4,10 +4,10 @@
       "item": "nichesmobs:geomancy_hammer"
     },
     "title": {
-      "translate": "advancements.nichesmobs.kill_wavy.title"
+      "translate": "advancements.nichesmobs.kill_wavy_geo.title"
     },
     "description": {
-      "translate": "advancements.nichesmobs.kill_wavy.description"
+      "translate": "advancements.nichesmobs.kill_wavy_geo.description"
     },
     "frame": "challenge"
   },
@@ -17,7 +17,7 @@
       "trigger": "minecraft:player_killed_entity",
       "conditions": {
         "entity": {
-          "type": "nichesmobs:wavy"
+          "type": "nichesmobs:wavy_geo"
         }
       }
     }

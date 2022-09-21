@@ -1,0 +1,24 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:cauldron"
+    },
+    "title": {
+      "translate": "advancements.nichesmobs.kill_n_cauldron.title"
+    },
+    "description": {
+      "translate": "advancements.nichesmobs.n_cauldron.description"
+    }
+  },
+  "parent": "minecraft:root",
+  "criteria": {
+    "n_cauldron": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "nichesmobs:n_cauldron"
+        }
+      }
+    }
+  }
+}
