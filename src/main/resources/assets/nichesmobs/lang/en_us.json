@@ -37,6 +37,8 @@
   "entity.nichesmobs.undead_executioner": "Undead-Executioner",
   "entity.nichesmobs.n_cauldron": "Netherite-Cauldron",
   "entity.nichesmobs.wavy_geo": "Wavy The Geomancy Master",
+  "entity.nichesmobs.elite_paws": "Elite Paws",
+  "entity.nichesmobs.sorcerer": "Sorcerer Paws the Wizard",
   "_comment": "Effects",
   "effect.nichesmobs.freeze": "Freeze",
   "_comment": "Advancements",

@@ -3,12 +3,14 @@ package com.frogniche.nichesmobs.entity;
 import com.frogniche.nichesmobs.NichesMobs;
 import com.frogniche.nichesmobs.entity.badger.crimsom_badger.CrimsomBadger;
 import com.frogniche.nichesmobs.entity.badger.warped_badger.WarpedBadger;
+import com.frogniche.nichesmobs.entity.elite_paws.ElitePaws;
 import com.frogniche.nichesmobs.entity.end_frog.EndFrog;
 import com.frogniche.nichesmobs.entity.end_tadpole.EndTadpole;
 import com.frogniche.nichesmobs.entity.furry.FurryEntity;
 import com.frogniche.nichesmobs.entity.guard.GuardEntity;
 import com.frogniche.nichesmobs.entity.n_cauldron.NCauldron;
 import com.frogniche.nichesmobs.entity.snow_mole.EntitySnowMole;
+import com.frogniche.nichesmobs.entity.sorcerer.Sorcerer;
 import com.frogniche.nichesmobs.entity.sp.SPEntity;
 import com.frogniche.nichesmobs.entity.ud.UDEntity;
 import com.frogniche.nichesmobs.entity.undead_executioner.Undead_ExecutionerEntity;
@@ -57,6 +59,12 @@ public class EntityInit {
 
     public static final RegistryObject<EntityType<FurryEntity>> FURRY = register("furry",
             EntityType.Builder.<FurryEntity>of(FurryEntity::new,  MobCategory.MONSTER));
+
+    public static final RegistryObject<EntityType<Sorcerer>> SORCERER = register("sorcerer",
+            EntityType.Builder.<Sorcerer>of(Sorcerer::new,  MobCategory.MONSTER));
+
+    public static final RegistryObject<EntityType<ElitePaws>> ELITE_PAWS = register("elite_paws",
+            EntityType.Builder.<ElitePaws>of(ElitePaws::new,  MobCategory.MONSTER));
 
     public static final RegistryObject<EntityType<WavyGeo>> WAVY_GEO = register("wavy_geo",
             EntityType.Builder.<WavyGeo>of(WavyGeo::new,  MobCategory.MONSTER));

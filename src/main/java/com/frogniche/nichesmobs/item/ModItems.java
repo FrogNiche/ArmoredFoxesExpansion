@@ -69,6 +69,14 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(EntityInit.END_TADPOLE,0x3a143a, 0xe3e29f,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
+    public static final RegistryObject<Item> S_SPAWN_EGG = ITEMS.register("s_spawn_egg",
+            () -> new ForgeSpawnEggItem(EntityInit.SORCERER,0xe65100, 0x3a143a,
+                    new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
+
+    public static final RegistryObject<Item> E_PAWS_SPAWN_EGG = ITEMS.register("e_paws_spawn_egg",
+            () -> new ForgeSpawnEggItem(EntityInit.ELITE_PAWS,0xd7c040, 0x20201e,
+                    new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
+
     public static final RegistryObject<Item> N_SPAWN_EGG = ITEMS.register("n_spawn_egg",
             () -> new ForgeSpawnEggItem(EntityInit.N_CAUDRON, 0x1d1819, 0x3e3a3e,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
