@@ -1210,7 +1210,7 @@
 				}
 			}
 		},
-		"animation.sorcerer.new": {
+		"animation.sorcerer.attack": {
 			"animation_length": 0.83333,
 			"bones": {
 				"wolfie": {

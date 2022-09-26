@@ -112,7 +112,7 @@ public class Sorcerer extends Monster implements IAnimatable {
             return PlayState.CONTINUE;
         }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.sorcerer.stiffy", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.sorcerer.idle", true));
         return PlayState.CONTINUE;
     }
 

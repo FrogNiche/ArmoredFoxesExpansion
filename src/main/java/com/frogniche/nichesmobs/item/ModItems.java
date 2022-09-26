@@ -1,10 +1,12 @@
 package com.frogniche.nichesmobs.item;
 
 import com.frogniche.nichesmobs.NichesMobs;
+import com.frogniche.nichesmobs.armor.NetheriteCauldronArmorItem;
 import com.frogniche.nichesmobs.entity.EntityInit;
 import com.frogniche.nichesmobs.item.custom.*;
 import com.frogniche.nichesmobs.item.custom.whip.Corrupted_Whip;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -116,7 +118,11 @@ public class ModItems {
     public static final RegistryObject<Item> W_SPAWN_EGG = ITEMS.register("w_spawn_egg",
             () -> new ForgeSpawnEggItem(EntityInit.WAVY_GEO,0xaec77d, 0xd84315,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
-
+// Armor
+public static final RegistryObject<Item> NETHERITE_CAULDRON_HELMET = ITEMS.register("cauldron_helmet",
+        () -> new NetheriteCauldronArmorItem(ArmorMaterials.NETHERITE, EquipmentSlot.HEAD,
+                new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
+    
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
