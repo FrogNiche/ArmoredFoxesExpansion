@@ -121,6 +121,8 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(EntityInit.UD, 0x1f1f1f, 0x000000,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
+    public static final RegistryObject<ForgeSpawnEggItem> SAVAGER_SPAWN_EGG = ITEMS.register("scavager_spawn_egg", () -> new ForgeSpawnEggItem(EntityInit.SAVAGER_GUARD, 0x4e342e, 0xe4a05b, new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
+
     // Armor
     public static final RegistryObject<Item> NETHERITE_CAULDRON_HELMET = ITEMS.register("cauldron_helmet",
             () -> new NetheriteCauldronArmorItem(ArmorMaterials.NETHERITE, EquipmentSlot.HEAD,

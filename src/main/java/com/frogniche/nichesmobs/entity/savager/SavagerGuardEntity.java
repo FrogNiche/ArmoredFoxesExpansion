@@ -57,7 +57,7 @@ public class SavagerGuardEntity extends Monster implements IAnimatable {
     private PlayState attackPredicate(AnimationEvent<SavagerGuardEntity> event) {
         if (this.swinging && event.getController().getAnimationState() == AnimationState.Stopped) {
             event.getController().markNeedsReload();
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.wolf_imius.attack", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.wolf_imius.attack", false));
             this.swinging = false;
         }
         return PlayState.CONTINUE;
