@@ -89,7 +89,7 @@ public class CrimsomBadger extends Animal implements IAnimatable {
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob animal) {
-        return EntityInit.CRIMSOM_BADGER.get().create(level);
+        return null;//EntityInit.CRIMSOM_BADGER.get().create(level);
 
     }
 

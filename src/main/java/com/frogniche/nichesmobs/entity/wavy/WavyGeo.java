@@ -71,9 +71,12 @@ public class WavyGeo extends Monster implements IAnimatable {
         super(type, world);
     }
 
+    /*
     protected WavyGeo(Level world){
         this(EntityInit.WAVY_GEO.get(), world);
     }
+
+     */
 
     @Override
     protected void registerGoals() {

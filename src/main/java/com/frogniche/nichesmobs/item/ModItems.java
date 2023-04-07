@@ -18,14 +18,14 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, NichesMobs.MOD_ID);
-// The Snow-Mole
+    // The Snow-Mole
     public static final RegistryObject<Item> SNOW_MOLE_SPAWN_EGG = ITEMS.register("snow_mole_spawn_egg",
-            () -> new ForgeSpawnEggItem(EntityInit.SNOW_MOLE,0xcccccc, 0xcbbeb5,
+            () -> new ForgeSpawnEggItem(EntityInit.SNOW_MOLE, 0xcccccc, 0xcbbeb5,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
- public static final RegistryObject<Item> NIGHTMARES_FANGS = ITEMS.register("nightmares_fangs",
-         () -> new Nightmares_FangsItem(Tiers.NETHERITE, 10, 9f,
-                 new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
+    public static final RegistryObject<Item> NIGHTMARES_FANGS = ITEMS.register("nightmares_fangs",
+            () -> new Nightmares_FangsItem(Tiers.NETHERITE, 10, 9f,
+                    new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 // WHAT'S GOING ON????
 
     public static final RegistryObject<Item> VA = ITEMS.register("va",
@@ -39,9 +39,9 @@ public class ModItems {
     public static final RegistryObject<Item> CORRUPTED_WHIP = ITEMS.register("corrupted_whip",
             () -> new Corrupted_Whip(Tiers.NETHERITE, 10, 9f,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB).fireResistant()));
- public static final RegistryObject<Item> TASTY_BONE = ITEMS.register("tasty_bone",
-         () -> new UnbreakableSword(Tiers.NETHERITE, 15, 9f,
-                 new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB).fireResistant()));
+    public static final RegistryObject<Item> TASTY_BONE = ITEMS.register("tasty_bone",
+            () -> new UnbreakableSword(Tiers.NETHERITE, 15, 9f,
+                    new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB).fireResistant()));
 
     public static final RegistryObject<Item> GEOMANCY_HAMMER = ITEMS.register("geomancy_hammer",
             () -> new PickaxeItem(Tiers.NETHERITE, 1, -2.8F,
@@ -60,69 +60,72 @@ public class ModItems {
             () -> new ItemFrameItem(EntityType.ITEM_FRAME, (new Item.Properties()).tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> WOLFIE_SPAWN_EGG = ITEMS.register("wolfie_spawn_egg",
-            () -> new ForgeSpawnEggItem(EntityInit.WOLFIE,0xF3E8DD, 0xD3D3D3,
+            () -> new ForgeSpawnEggItem(EntityInit.WOLFIE, 0xF3E8DD, 0xD3D3D3,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> E_FROG_SPAWN_EGG = ITEMS.register("e_frog_spawn_egg",
-            () -> new ForgeSpawnEggItem(EntityInit.END_FROG,0xe1d7e1, 0x3a143a,
+            () -> new ForgeSpawnEggItem(EntityInit.END_FROG, 0xe1d7e1, 0x3a143a,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
-// The Spawn Egg Edition!
+    // The Spawn Egg Edition!
     public static final RegistryObject<Item> E_T_SPAWN_EGG = ITEMS.register("e_t_spawn_egg",
-            () -> new ForgeSpawnEggItem(EntityInit.END_TADPOLE,0x3a143a, 0xe3e29f,
+            () -> new ForgeSpawnEggItem(EntityInit.END_TADPOLE, 0x3a143a, 0xe3e29f,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> S_SPAWN_EGG = ITEMS.register("s_spawn_egg",
-            () -> new ForgeSpawnEggItem(EntityInit.SORCERER,0xe65100, 0x3a143a,
+            () -> new ForgeSpawnEggItem(EntityInit.SORCERER, 0xe65100, 0x3a143a,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> E_PAWS_SPAWN_EGG = ITEMS.register("e_paws_spawn_egg",
-            () -> new ForgeSpawnEggItem(EntityInit.ELITE_PAWS,0xd7c040, 0x20201e,
+            () -> new ForgeSpawnEggItem(EntityInit.ELITE_PAWS, 0xd7c040, 0x20201e,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> N_SPAWN_EGG = ITEMS.register("n_spawn_egg",
             () -> new ForgeSpawnEggItem(EntityInit.N_CAUDRON, 0x1d1819, 0x3e3a3e,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
+    /*
     public static final RegistryObject<Item> WB_SPAWN_EGG = ITEMS.register("wb_spawn_egg",
             () -> new ForgeSpawnEggItem(EntityInit.WARPED_BADGER, 0x06564c, 0x187d84,
+                    new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
+    public static final RegistryObject<Item> W_SPAWN_EGG = ITEMS.register("w_spawn_egg",
+            () -> new ForgeSpawnEggItem(EntityInit.WAVY_GEO,0xaec77d, 0xd84315,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> CB_SPAWN_EGG = ITEMS.register("cb_spawn_egg",
             () -> new ForgeSpawnEggItem(EntityInit.CRIMSOM_BADGER, 0x4f1e1c, 0x7e1d1d,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
+     */
+
     public static final RegistryObject<Item> UNDEAD_EXECUTIONER_SPAWN_EGG = ITEMS.register("undead_executioner_spawn_egg",
-            () -> new ForgeSpawnEggItem(EntityInit.UNDEAD_EXECUTIONER,0x8bc34a, 0x8bc34a,
+            () -> new ForgeSpawnEggItem(EntityInit.UNDEAD_EXECUTIONER, 0x8bc34a, 0x8bc34a,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> SP_SPAWN_EGG = ITEMS.register("sp_spawn_egg",
-            () -> new ForgeSpawnEggItem(EntityInit.SP,0xCB8B16, 0xDDCE17,
+            () -> new ForgeSpawnEggItem(EntityInit.SP, 0xCB8B16, 0xDDCE17,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> GUARD_SPAWN_EGG = ITEMS.register("guard_spawn_egg",
-            () -> new ForgeSpawnEggItem(EntityInit.GUARD,0xe49a3, 0xf8d73b,
+            () -> new ForgeSpawnEggItem(EntityInit.GUARD, 0xe49a3, 0xf8d73b,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> F_SPAWN_EGG = ITEMS.register("f_spawn_egg",
-            () -> new ForgeSpawnEggItem(EntityInit.FRANCOIS,0xfbe9e7, 0xef6c00,
+            () -> new ForgeSpawnEggItem(EntityInit.FRANCOIS, 0xfbe9e7, 0xef6c00,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> FURRY_SPAWN_EGG = ITEMS.register("furry_spawn_egg",
-            () -> new ForgeSpawnEggItem(EntityInit.FURRY,0x3e2723, 0xef6c00,
+            () -> new ForgeSpawnEggItem(EntityInit.FURRY, 0x3e2723, 0xef6c00,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
     public static final RegistryObject<Item> UD_SPAWN_EGG = ITEMS.register("ud_spawn_egg",
-            () -> new ForgeSpawnEggItem(EntityInit.UD,0x1f1f1f, 0x000000,
+            () -> new ForgeSpawnEggItem(EntityInit.UD, 0x1f1f1f, 0x000000,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
-    public static final RegistryObject<Item> W_SPAWN_EGG = ITEMS.register("w_spawn_egg",
-            () -> new ForgeSpawnEggItem(EntityInit.WAVY_GEO,0xaec77d, 0xd84315,
+    // Armor
+    public static final RegistryObject<Item> NETHERITE_CAULDRON_HELMET = ITEMS.register("cauldron_helmet",
+            () -> new NetheriteCauldronArmorItem(ArmorMaterials.NETHERITE, EquipmentSlot.HEAD,
                     new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
-// Armor
-public static final RegistryObject<Item> NETHERITE_CAULDRON_HELMET = ITEMS.register("cauldron_helmet",
-        () -> new NetheriteCauldronArmorItem(ArmorMaterials.NETHERITE, EquipmentSlot.HEAD,
-                new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
-    
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

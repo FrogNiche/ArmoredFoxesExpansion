@@ -88,7 +88,7 @@ public class WarpedBadger extends Animal implements IAnimatable {
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob animal) {
-        return EntityInit.WARPED_BADGER.get().create(level);
+        return null;//EntityInit.WARPED_BADGER.get().create(level);
 
     }
 

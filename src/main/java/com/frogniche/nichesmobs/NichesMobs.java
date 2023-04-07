@@ -20,6 +20,8 @@ import com.frogniche.nichesmobs.entity.guard.GuardEntity;
 import com.frogniche.nichesmobs.entity.guard.GuardRenderer;
 import com.frogniche.nichesmobs.entity.n_cauldron.NCauldron;
 import com.frogniche.nichesmobs.entity.n_cauldron.NCauldronRenderer;
+import com.frogniche.nichesmobs.entity.savager.SavagerGuardEntity;
+import com.frogniche.nichesmobs.entity.savager.SavagerGuardRenderer;
 import com.frogniche.nichesmobs.entity.snow_mole.EntitySnowMole;
 import com.frogniche.nichesmobs.entity.snow_mole.SnowMoleRenderer;
 import com.frogniche.nichesmobs.entity.sorcerer.Sorcerer;
@@ -84,28 +86,29 @@ public class NichesMobs
         EntityRenderers.register(EntityInit.END_TADPOLE.get(), EndTadpoleRenderer::new);
         EntityRenderers.register(EntityInit.FRANCOIS.get(), FrancoisRenderer::new);
         EntityRenderers.register(EntityInit.END_FROG.get(), EndFrogRenderer::new);
-        EntityRenderers.register(EntityInit.WARPED_BADGER.get(), WarpedBadgerRenderer::new);
-        EntityRenderers.register(EntityInit.CRIMSOM_BADGER.get(), CrimsomBadgerRenderer::new);
+        //EntityRenderers.register(EntityInit.WARPED_BADGER.get(), WarpedBadgerRenderer::new);
+        //EntityRenderers.register(EntityInit.CRIMSOM_BADGER.get(), CrimsomBadgerRenderer::new);
         EntityRenderers.register(EntityInit.SP.get(), SPRenderer::new);
         EntityRenderers.register(EntityInit.GUARD.get(), GuardRenderer::new);
         EntityRenderers.register(EntityInit.SORCERER.get(), SorcererRenderer::new);
         EntityRenderers.register(EntityInit.ELITE_PAWS.get(), ElitePawsRenderer::new);
-        EntityRenderers.register(EntityInit.WAVY_GEO.get(), WavyRenderer::new);
+        //EntityRenderers.register(EntityInit.WAVY_GEO.get(), WavyRenderer::new);
         EntityRenderers.register(EntityInit.FURRY.get(), FurryRenderer::new);
         EntityRenderers.register(EntityInit.WOLFIE.get(), WolfieRenderer::new);
         EntityRenderers.register(EntityInit.SNOW_MOLE.get(), SnowMoleRenderer::new);
         EntityRenderers.register(EntityInit.UD.get(), UDRenderer::new);
         EntityRenderers.register(EntityInit.UNDEAD_EXECUTIONER.get(), Undead_ExecutionerRenderer::new);
         EntityRenderers.register(EntityInit.N_CAUDRON.get(), NCauldronRenderer::new);
-        EntityRenderers.register(EntityInit.CAULDRON.get(), NCauldronRenderer::new);
+        //EntityRenderers.register(EntityInit.CAULDRON.get(), NCauldronRenderer::new);
+        EntityRenderers.register(EntityInit.SAVAGER_GUARD.get(), SavagerGuardRenderer::new);
     }
     private void registerEntityAttributes(EntityAttributeCreationEvent event){
         event.put(EntityInit.SNOW_MOLE.get(), EntitySnowMole.createAttributes().build());
         event.put(EntityInit.FRANCOIS.get(), Francois.createAttributes().build());
         event.put(EntityInit.END_TADPOLE.get(), EndTadpole.createAttributes().build());
         event.put(EntityInit.END_FROG.get(), EndFrog.createAttributes().build());
-        event.put(EntityInit.CRIMSOM_BADGER.get(), CrimsomBadger.createAttributes().build());
-        event.put(EntityInit.WARPED_BADGER.get(), WarpedBadger.createAttributes().build());
+        //event.put(EntityInit.CRIMSOM_BADGER.get(), CrimsomBadger.createAttributes().build());
+        //event.put(EntityInit.WARPED_BADGER.get(), WarpedBadger.createAttributes().build());
         event.put(EntityInit.SP.get(), SPEntity.createAttributes());
         event.put(EntityInit.ELITE_PAWS.get(), ElitePaws.createAttributes());
         event.put(EntityInit.GUARD.get(), GuardEntity.createAttributes());
@@ -114,9 +117,10 @@ public class NichesMobs
         event.put(EntityInit.WOLFIE.get(), WolfieEntity.createAttributes());
         event.put(EntityInit.UD.get(), UDEntity.createAttributes());
         event.put(EntityInit.UNDEAD_EXECUTIONER.get(), Undead_ExecutionerEntity.createAttributes());
-        event.put(EntityInit.WAVY_GEO.get(), WavyGeo.createAttributes());
+        //event.put(EntityInit.WAVY_GEO.get(), WavyGeo.createAttributes());
         event.put(EntityInit.N_CAUDRON.get(), NCauldron.createAttributes());
-        event.put(EntityInit.CAULDRON.get(), Cauldron.createAttributes());
+        //event.put(EntityInit.CAULDRON.get(), Cauldron.createAttributes());
+        event.put(EntityInit.SAVAGER_GUARD.get(), SavagerGuardEntity.createAttributes());
     }
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class ClientModEvents

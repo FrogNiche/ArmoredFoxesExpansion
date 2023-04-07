@@ -9,6 +9,7 @@ import com.frogniche.nichesmobs.entity.end_tadpole.EndTadpole;
 import com.frogniche.nichesmobs.entity.furry.FurryEntity;
 import com.frogniche.nichesmobs.entity.guard.GuardEntity;
 import com.frogniche.nichesmobs.entity.n_cauldron.NCauldron;
+import com.frogniche.nichesmobs.entity.savager.SavagerGuardEntity;
 import com.frogniche.nichesmobs.entity.snow_mole.EntitySnowMole;
 import com.frogniche.nichesmobs.entity.sorcerer.Sorcerer;
 import com.frogniche.nichesmobs.entity.sp.SPEntity;
@@ -65,18 +66,16 @@ public class EntityInit {
 
     public static final RegistryObject<EntityType<ElitePaws>> ELITE_PAWS = register("elite_paws",
             EntityType.Builder.<ElitePaws>of(ElitePaws::new,  MobCategory.MONSTER));
+    public static final RegistryObject<EntityType<SavagerGuardEntity>> SAVAGER_GUARD = register("savager_guard", EntityType.Builder.of(SavagerGuardEntity::new, MobCategory.MONSTER));
 
-    public static final RegistryObject<EntityType<WavyGeo>> WAVY_GEO = register("wavy_geo",
-            EntityType.Builder.<WavyGeo>of(WavyGeo::new,  MobCategory.MONSTER));
-    public static final RegistryObject<EntityType<WarpedBadger>> WARPED_BADGER = register("warped_badger",
-            EntityType.Builder.<WarpedBadger>of(WarpedBadger::new,  MobCategory.AMBIENT));
-    public static final RegistryObject<EntityType<CrimsomBadger>> CRIMSOM_BADGER = register("crimsom_badger",
-            EntityType.Builder.<CrimsomBadger>of(CrimsomBadger::new,  MobCategory.AMBIENT));
-    public static final RegistryObject<EntityType<NCauldron>> N_CAUDRON = register("n_cauldron",
-            EntityType.Builder.of(NCauldron::new, MobCategory.MONSTER).sized(2, 2f));
+    //public static final RegistryObject<EntityType<WavyGeo>> WAVY_GEO = register("wavy_geo", EntityType.Builder.<WavyGeo>of(WavyGeo::new,  MobCategory.MONSTER));
+    //public static final RegistryObject<EntityType<WarpedBadger>> WARPED_BADGER = register("warped_badger", EntityType.Builder.<WarpedBadger>of(WarpedBadger::new,  MobCategory.AMBIENT));
+    //public static final RegistryObject<EntityType<CrimsomBadger>> CRIMSOM_BADGER = register("crimsom_badger", EntityType.Builder.<CrimsomBadger>of(CrimsomBadger::new,  MobCategory.AMBIENT));
+    //public static final RegistryObject<EntityType<NCauldron>> CAULDRON = register("cauldron", EntityType.Builder.of(NCauldron::new, MobCategory.MONSTER).sized(2, 2f));
 
-    public static final RegistryObject<EntityType<NCauldron>> CAULDRON = register("cauldron",
-            EntityType.Builder.of(NCauldron::new, MobCategory.MONSTER).sized(2, 2f));
+
+    public static final RegistryObject<EntityType<NCauldron>> N_CAUDRON = register("n_cauldron",EntityType.Builder.of(NCauldron::new, MobCategory.MONSTER).sized(2, 2f));
+
 
     public static final <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> builder){
         return ENTITIES.register(name, () -> builder.build(NichesMobs.modLoc(name).toString()));
