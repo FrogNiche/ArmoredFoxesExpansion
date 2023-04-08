@@ -129,6 +129,7 @@ public class NichesMobs
         event.put(EntityInit.N_CAUDRON.get(), NCauldron.createAttributes());
         //event.put(EntityInit.CAULDRON.get(), Cauldron.createAttributes());
         event.put(EntityInit.SAVAGER_GUARD.get(), SavagerGuardEntity.createAttributes());
+        event.put(EntityInit.SPORES_CHIEF.get(), SporesChiefEntity.makeAttributes());
     }
 
     public static <T extends LivingEntity & IAnimatable> EntityRendererProvider<T> makeRenderer(AnimatedGeoModel<T> model){

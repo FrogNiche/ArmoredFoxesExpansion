@@ -68,7 +68,7 @@ public class EntityInit {
     public static final RegistryObject<EntityType<ElitePaws>> ELITE_PAWS = register("elite_paws",
             EntityType.Builder.<ElitePaws>of(ElitePaws::new,  MobCategory.MONSTER));
     public static final RegistryObject<EntityType<SavagerGuardEntity>> SAVAGER_GUARD = register("savager_guard", EntityType.Builder.of(SavagerGuardEntity::new, MobCategory.MONSTER));
-    public static final RegistryObject<EntityType<SporesChiefEntity>> SPORES_CHIEF = register("spores_chief", EntityType.Builder.of(SporesChiefEntity::new, MobCategory.MONSTER).sized(1f, 3f));
+    public static final RegistryObject<EntityType<SporesChiefEntity>> SPORES_CHIEF = register("spores_chief", EntityType.Builder.of(SporesChiefEntity::new, MobCategory.MONSTER).sized(2f, 7f));
 
     //public static final RegistryObject<EntityType<WavyGeo>> WAVY_GEO = register("wavy_geo", EntityType.Builder.<WavyGeo>of(WavyGeo::new,  MobCategory.MONSTER));
     //public static final RegistryObject<EntityType<WarpedBadger>> WARPED_BADGER = register("warped_badger", EntityType.Builder.<WarpedBadger>of(WarpedBadger::new,  MobCategory.AMBIENT));
