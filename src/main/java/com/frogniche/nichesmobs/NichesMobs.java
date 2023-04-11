@@ -28,6 +28,8 @@ import com.frogniche.nichesmobs.entity.sorcerer.Sorcerer;
 import com.frogniche.nichesmobs.entity.sorcerer.SorcererRenderer;
 import com.frogniche.nichesmobs.entity.sp.SPEntity;
 import com.frogniche.nichesmobs.entity.sp.SPRenderer;
+import com.frogniche.nichesmobs.entity.sp_medic.SPMedic;
+import com.frogniche.nichesmobs.entity.sp_medic.SpMedicModel;
 import com.frogniche.nichesmobs.entity.spores_chief.SporesChiefEntity;
 import com.frogniche.nichesmobs.entity.spores_chief.SporesChiefModel;
 import com.frogniche.nichesmobs.entity.ud.UDEntity;
@@ -109,6 +111,7 @@ public class NichesMobs
         //EntityRenderers.register(EntityInit.CAULDRON.get(), NCauldronRenderer::new);
         EntityRenderers.register(EntityInit.SAVAGER_GUARD.get(), SavagerGuardRenderer::new);
         EntityRenderers.register(EntityInit.SPORES_CHIEF.get(), makeRenderer(new SporesChiefModel()));
+        EntityRenderers.register(EntityInit.SP_MEDIC.get(), makeRenderer(new SpMedicModel()));
     }
     private void registerEntityAttributes(EntityAttributeCreationEvent event){
         event.put(EntityInit.SNOW_MOLE.get(), EntitySnowMole.createAttributes().build());
@@ -130,6 +133,7 @@ public class NichesMobs
         //event.put(EntityInit.CAULDRON.get(), Cauldron.createAttributes());
         event.put(EntityInit.SAVAGER_GUARD.get(), SavagerGuardEntity.createAttributes());
         event.put(EntityInit.SPORES_CHIEF.get(), SporesChiefEntity.makeAttributes());
+        event.put(EntityInit.SP_MEDIC.get(), SPMedic.createAttributes());
     }
 
     public static <T extends LivingEntity & IAnimatable> EntityRendererProvider<T> makeRenderer(AnimatedGeoModel<T> model){
