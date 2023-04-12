@@ -100,9 +100,8 @@ public class WavyGeo extends Monster implements IAnimatable {
 
         this.goalSelector.addGoal(2, new NearestAttackableTargetGoal(this, Villager.class, true) {
         });
-
-        this.goalSelector.addGoal(10, new RandomStrollGoal(this, 1f){
-        });
+        this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, Player.class, 10f));
+        this.goalSelector.addGoal(10, new RandomStrollGoal(this, 1f));
     }
 
     @Override

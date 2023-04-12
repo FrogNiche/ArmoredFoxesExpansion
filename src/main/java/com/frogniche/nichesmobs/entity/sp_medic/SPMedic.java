@@ -61,7 +61,7 @@ public class SPMedic extends Animal implements IAnimatable {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new RunawayFromPlayerGoal(this, 3d, 30, 0.8f));
 
-        this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 6f));
+        this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 10f));
 
         this.goalSelector.addGoal(10, new RandomStrollGoal(this, 0.5f, 10));
         this.goalSelector.addGoal(10, new RandomLookAroundGoal(this));

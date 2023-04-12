@@ -5,10 +5,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.behavior.Swim;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.JumpGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.monster.Monster;
@@ -51,6 +48,7 @@ public class SavagerGuardEntity extends Monster implements IAnimatable {
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 0.5d, true));
         this.goalSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true));
         this.goalSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
+        this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 10f));
         this.goalSelector.addGoal(10, new RandomStrollGoal(this, 0.3d, 10));
     }
 
