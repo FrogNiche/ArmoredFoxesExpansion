@@ -3,6 +3,7 @@ package com.frogniche.nichesmobs.entity;
 import com.frogniche.nichesmobs.NichesMobs;
 import com.frogniche.nichesmobs.entity.badger.crimsom_badger.CrimsomBadger;
 import com.frogniche.nichesmobs.entity.badger.warped_badger.WarpedBadger;
+import com.frogniche.nichesmobs.entity.bone_chief.BoneHordeChief;
 import com.frogniche.nichesmobs.entity.elite_paws.ElitePaws;
 import com.frogniche.nichesmobs.entity.end_frog.EndFrog;
 import com.frogniche.nichesmobs.entity.end_tadpole.EndTadpole;
@@ -10,6 +11,7 @@ import com.frogniche.nichesmobs.entity.furry.FurryEntity;
 import com.frogniche.nichesmobs.entity.guard.GuardEntity;
 import com.frogniche.nichesmobs.entity.n_cauldron.NCauldron;
 import com.frogniche.nichesmobs.entity.potted_paws.PottedPaws;
+import com.frogniche.nichesmobs.entity.runt.Runt;
 import com.frogniche.nichesmobs.entity.savager.SavagerGuardEntity;
 import com.frogniche.nichesmobs.entity.snow_mole.EntitySnowMole;
 import com.frogniche.nichesmobs.entity.sorcerer.Sorcerer;
@@ -28,6 +30,7 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import software.bernie.geckolib3.geo.raw.pojo.Bone;
 
 public class EntityInit {
 
@@ -74,6 +77,8 @@ public class EntityInit {
     public static final RegistryObject<EntityType<SporesChiefEntity>> SPORES_CHIEF = register("spores_chief", EntityType.Builder.of(SporesChiefEntity::new, MobCategory.MONSTER).sized(2f, 7f));
     public static final RegistryObject<EntityType<SPMedic>> SP_MEDIC = register("sp_medic", EntityType.Builder.of(SPMedic::new, MobCategory.AMBIENT).sized(1f, 1.5f));
     public static final RegistryObject<EntityType<PottedPaws>> POTTED_PAWS = register("potted_paws", EntityType.Builder.of(PottedPaws::new, MobCategory.AMBIENT).sized(1f, 1.5f));
+    public static final RegistryObject<EntityType<BoneHordeChief>> BONE_HORDE_CHIEF = register("bone_horde_chief", EntityType.Builder.of(BoneHordeChief::new, MobCategory.AMBIENT).sized(1f, 1.5f));
+    public static final RegistryObject<EntityType<Runt>> RUNT = register("runt", EntityType.Builder.of(Runt::new, MobCategory.AMBIENT).sized(1f, 1.5f));
 
     //public static final RegistryObject<EntityType<WavyGeo>> WAVY_GEO = register("wavy_geo", EntityType.Builder.<WavyGeo>of(WavyGeo::new,  MobCategory.MONSTER));
     //public static final RegistryObject<EntityType<WarpedBadger>> WARPED_BADGER = register("warped_badger", EntityType.Builder.<WarpedBadger>of(WarpedBadger::new,  MobCategory.AMBIENT));
