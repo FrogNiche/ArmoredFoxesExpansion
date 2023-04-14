@@ -7,6 +7,8 @@ import com.frogniche.nichesmobs.entity.badger.warped_badger.WarpedBadger;
 import com.frogniche.nichesmobs.entity.badger.warped_badger.WarpedBadgerRenderer;
 import com.frogniche.nichesmobs.entity.bone_chief.BoneChiefModel;
 import com.frogniche.nichesmobs.entity.bone_chief.BoneHordeChief;
+import com.frogniche.nichesmobs.entity.bone_grunter.BoneGrunter;
+import com.frogniche.nichesmobs.entity.bone_grunter.BoneGrunterModel;
 import com.frogniche.nichesmobs.entity.cauldron.Cauldron;
 import com.frogniche.nichesmobs.entity.cauldron.CauldronRenderer;
 import com.frogniche.nichesmobs.entity.elite_paws.ElitePaws;
@@ -28,6 +30,8 @@ import com.frogniche.nichesmobs.entity.runt.Runt;
 import com.frogniche.nichesmobs.entity.runt.RuntModel;
 import com.frogniche.nichesmobs.entity.savager.SavagerGuardEntity;
 import com.frogniche.nichesmobs.entity.savager.SavagerGuardRenderer;
+import com.frogniche.nichesmobs.entity.saw_paws.SawPaws;
+import com.frogniche.nichesmobs.entity.saw_paws.SawPawsModel;
 import com.frogniche.nichesmobs.entity.snow_mole.EntitySnowMole;
 import com.frogniche.nichesmobs.entity.snow_mole.SnowMoleRenderer;
 import com.frogniche.nichesmobs.entity.sorcerer.Sorcerer;
@@ -121,6 +125,8 @@ public class NichesMobs
         EntityRenderers.register(EntityInit.POTTED_PAWS.get(), makeRenderer(new PottedPawsModel()));
         EntityRenderers.register(EntityInit.BONE_HORDE_CHIEF.get(), makeRenderer(new BoneChiefModel()));
         EntityRenderers.register(EntityInit.RUNT.get(), makeRenderer(new RuntModel()));
+        EntityRenderers.register(EntityInit.SAW_PAWS.get(), makeRenderer(new SawPawsModel()));
+        EntityRenderers.register(EntityInit.BONE_GRUNTER.get(), makeRenderer(new BoneGrunterModel()));
     }
     private void registerEntityAttributes(EntityAttributeCreationEvent event){
         event.put(EntityInit.SNOW_MOLE.get(), EntitySnowMole.createAttributes().build());
@@ -146,10 +152,19 @@ public class NichesMobs
         event.put(EntityInit.POTTED_PAWS.get(), PottedPaws.createAttributes());
         event.put(EntityInit.BONE_HORDE_CHIEF.get(), BoneHordeChief.createAttributes());
         event.put(EntityInit.RUNT.get(), Runt.createAttributes());
+        event.put(EntityInit.SAW_PAWS.get(), SawPaws.createAttributes());
+        event.put(EntityInit.BONE_GRUNTER.get(), BoneGrunter.createAttributes());
     }
 
     public static <T extends LivingEntity & IAnimatable> EntityRendererProvider<T> makeRenderer(AnimatedGeoModel<T> model){
         return m -> new HelperGeoRenderer<>(m, model);
+    }
+
+    public static class HelperGeoRenderer<T extends LivingEntity & IAnimatable> extends GeoEntityRenderer<T>{
+
+        public HelperGeoRenderer(EntityRendererProvider.Context renderManager, AnimatedGeoModel<T> modelProvider) {
+            super(renderManager, modelProvider);
+        }
     }
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class ClientModEvents
@@ -159,13 +174,6 @@ public class NichesMobs
         {
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
-        }
-    }
-
-    public static class HelperGeoRenderer<T extends LivingEntity & IAnimatable> extends GeoEntityRenderer<T>{
-
-        public HelperGeoRenderer(EntityRendererProvider.Context renderManager, AnimatedGeoModel<T> modelProvider) {
-            super(renderManager, modelProvider);
         }
     }
 }

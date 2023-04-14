@@ -1,7 +1,6 @@
-package com.frogniche.nichesmobs.entity.runt;
+package com.frogniche.nichesmobs.entity.bone_grunter;
 
 import com.frogniche.nichesmobs.NichesMobs;
-import com.frogniche.nichesmobs.entity.RunawayFromPlayerGoal;
 import com.frogniche.nichesmobs.entity.savager.SavagerGuardEntity;
 import com.frogniche.nichesmobs.entity.sp_medic.SPMedic;
 import com.frogniche.nichesmobs.entity.spores_chief.SporesChiefEntity;
@@ -10,12 +9,12 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import software.bernie.geckolib3.core.AnimationState;
@@ -27,7 +26,7 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class Runt extends PathfinderMob implements IAnimatable {
+public class BoneGrunter extends Monster implements IAnimatable {
 
     public static final EntityDataAccessor<Integer> TYPE = SynchedEntityData.defineId(SporesChiefEntity.class, EntityDataSerializers.INT);
 
@@ -35,15 +34,14 @@ public class Runt extends PathfinderMob implements IAnimatable {
         return Animal.createMobAttributes().add(Attributes.MAX_HEALTH, 30)
                 .add(Attributes.MOVEMENT_SPEED, 0.6d)
                 .add(Attributes.ARMOR, 9)
-                .add(Attributes.ATTACK_DAMAGE, 5)
+                .add(Attributes.ATTACK_DAMAGE, 10)
                 .build();
     }
 
     protected AnimationFactory factory = new AnimationFactory(this);
-    private boolean attackAnimation;
 
-    public Runt(EntityType<? extends PathfinderMob> p_21683_, Level p_21684_) {
-        super(p_21683_, p_21684_);
+    public BoneGrunter(EntityType<? extends Monster> p_33002_, Level p_33003_) {
+        super(p_33002_, p_33003_);
     }
 
     @Override
@@ -61,20 +59,16 @@ public class Runt extends PathfinderMob implements IAnimatable {
 
     protected PlayState predicate(AnimationEvent<SPMedic> event) {
         if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.runt.WALK"));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.grunter.walk"));
             return PlayState.CONTINUE;
         }
-        return PlayState.CONTINUE;
+        return PlayState.STOP;
     }
 
     private PlayState attackPredicate(AnimationEvent<SavagerGuardEntity> event) {
         if (this.swinging && event.getController().getAnimationState() == AnimationState.Stopped) {
             event.getController().markNeedsReload();
-            if (attackAnimation)
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.runt.ATTACK", false));
-            else
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.runt.ATTACK2", false));
-            attackAnimation = !attackAnimation;
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.grunter.attack", false));
             this.swinging = false;
         }
         return PlayState.CONTINUE;
@@ -111,9 +105,9 @@ public class Runt extends PathfinderMob implements IAnimatable {
     }
 
     public static enum Type {
-        BONE(NichesMobs.modLoc("textures/entity/bone_runt.png")),
-        BASTION(NichesMobs.modLoc("textures/entity/bastion_runt.png")),
-        WARPED(NichesMobs.modLoc("textures/entity/warped_runt.png"));
+        BONE1(NichesMobs.modLoc("textures/entity/bone_grunter_1.png")),
+        BONE2(NichesMobs.modLoc("textures/entity/bone_grunter_2.png")),
+        BONE3(NichesMobs.modLoc("textures/entity/bone_grunter_3.png"));
 
         private final ResourceLocation texture;
 
