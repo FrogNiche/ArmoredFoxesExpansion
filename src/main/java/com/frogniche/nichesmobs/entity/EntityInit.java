@@ -1,8 +1,7 @@
 package com.frogniche.nichesmobs.entity;
 
 import com.frogniche.nichesmobs.NichesMobs;
-import com.frogniche.nichesmobs.entity.badger.crimsom_badger.CrimsomBadger;
-import com.frogniche.nichesmobs.entity.badger.warped_badger.WarpedBadger;
+import com.frogniche.nichesmobs.entity.bastion_chief.BastionChief;
 import com.frogniche.nichesmobs.entity.bone_chief.BoneHordeChief;
 import com.frogniche.nichesmobs.entity.bone_grunter.BoneGrunter;
 import com.frogniche.nichesmobs.entity.elite_paws.ElitePaws;
@@ -83,6 +82,7 @@ public class EntityInit {
     public static final RegistryObject<EntityType<Runt>> RUNT = register("runt", EntityType.Builder.of(Runt::new, MobCategory.AMBIENT).sized(1f, 1.5f));
     public static final RegistryObject<EntityType<SawPaws>> SAW_PAWS = register("saw_paws", EntityType.Builder.of(SawPaws::new, MobCategory.AMBIENT).sized(1f, 1.5f));
     public static final RegistryObject<EntityType<BoneGrunter>> BONE_GRUNTER = register("bone_grunter", EntityType.Builder.of(BoneGrunter::new, MobCategory.AMBIENT).sized(1f, 1.5f));
+    public static final RegistryObject<EntityType<BastionChief>> BASTION_CHIEF = register("bastion_chief", EntityType.Builder.of(BastionChief::new, MobCategory.MONSTER).sized(1f, 1.5f));
 
     //public static final RegistryObject<EntityType<WavyGeo>> WAVY_GEO = register("wavy_geo", EntityType.Builder.<WavyGeo>of(WavyGeo::new,  MobCategory.MONSTER));
     //public static final RegistryObject<EntityType<WarpedBadger>> WARPED_BADGER = register("warped_badger", EntityType.Builder.<WarpedBadger>of(WarpedBadger::new,  MobCategory.AMBIENT));

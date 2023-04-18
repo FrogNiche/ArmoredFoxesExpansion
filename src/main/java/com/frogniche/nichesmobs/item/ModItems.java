@@ -129,6 +129,7 @@ public class ModItems {
     public static final RegistryObject<ForgeSpawnEggItem> BONE_CHIEF_SPAWN_EGG = SPAWN_EGGS.register("bone_chief_spawn_egg", () -> new ForgeSpawnEggItem(EntityInit.BONE_HORDE_CHIEF, 0xb6b3a2, 0x312a24, new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
     public static final RegistryObject<ForgeSpawnEggItem> SAW_PAWS_SPAWN_EGG = SPAWN_EGGS.register("saw_paws_spawn_egg", () -> new ForgeSpawnEggItem(EntityInit.SAW_PAWS, 0xf47d08, 0xc4ae22, new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
     public static final RegistryObject<ForgeSpawnEggItem> BONE_GRUNTER_SPAWN_EGG = SPAWN_EGGS.register("bone_grunter_spawn_egg", () -> new ForgeSpawnEggItem(EntityInit.BONE_GRUNTER, 0x1f1714, 0xb99d06, new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
+    public static final RegistryObject<ForgeSpawnEggItem> BASTION_CHIEF_SPAWN_EGG = SPAWN_EGGS.register("bastion_chief_spawn_egg", () -> new ForgeSpawnEggItem(EntityInit.BASTION_CHIEF, 0x251f1b, 0xb99d06, new Item.Properties().tab(ModCreativeModeTab.NICHES_TAB)));
 
     // Armor
     public static final RegistryObject<Item> NETHERITE_CAULDRON_HELMET = ITEMS.register("cauldron_helmet",

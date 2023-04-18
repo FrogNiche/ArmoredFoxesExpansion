@@ -119,7 +119,7 @@ public class SPMedic extends Animal implements IAnimatable {
 
 
     public static enum Type {
-        NORMAL(NichesMobs.modLoc("textures/entity/normal_sp_medic.png")),
+        NORMAL(NichesMobs.modLoc("textures/entity/bone_sp_medic.png")),
         BASTION(NichesMobs.modLoc("textures/entity/bastion_sp_medic.png")),
         WARPED(NichesMobs.modLoc("textures/entity/warped_sp_medic.png"));
 

@@ -105,9 +105,9 @@ public class BoneGrunter extends Monster implements IAnimatable {
     }
 
     public static enum Type {
-        BONE1(NichesMobs.modLoc("textures/entity/bone_grunter_1.png")),
-        BONE2(NichesMobs.modLoc("textures/entity/bone_grunter_2.png")),
-        BONE3(NichesMobs.modLoc("textures/entity/bone_grunter_3.png"));
+        BASTION(NichesMobs.modLoc("textures/entity/bastion_grunter.png")),
+        BONE(NichesMobs.modLoc("textures/entity/bone_grunter.png")),
+        WARPED(NichesMobs.modLoc("textures/entity/warped_grunter.png"));
 
         private final ResourceLocation texture;
 

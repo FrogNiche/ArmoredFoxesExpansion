@@ -1,16 +1,12 @@
 package com.frogniche.nichesmobs;
 import com.frogniche.nichesmobs.effect.ModEffects;
 import com.frogniche.nichesmobs.entity.EntityInit;
-import com.frogniche.nichesmobs.entity.badger.crimsom_badger.CrimsomBadger;
-import com.frogniche.nichesmobs.entity.badger.crimsom_badger.CrimsomBadgerRenderer;
-import com.frogniche.nichesmobs.entity.badger.warped_badger.WarpedBadger;
-import com.frogniche.nichesmobs.entity.badger.warped_badger.WarpedBadgerRenderer;
+import com.frogniche.nichesmobs.entity.bastion_chief.BastionChief;
+import com.frogniche.nichesmobs.entity.bastion_chief.BastionChiefModel;
 import com.frogniche.nichesmobs.entity.bone_chief.BoneChiefModel;
 import com.frogniche.nichesmobs.entity.bone_chief.BoneHordeChief;
 import com.frogniche.nichesmobs.entity.bone_grunter.BoneGrunter;
 import com.frogniche.nichesmobs.entity.bone_grunter.BoneGrunterModel;
-import com.frogniche.nichesmobs.entity.cauldron.Cauldron;
-import com.frogniche.nichesmobs.entity.cauldron.CauldronRenderer;
 import com.frogniche.nichesmobs.entity.elite_paws.ElitePaws;
 import com.frogniche.nichesmobs.entity.elite_paws.ElitePawsRenderer;
 import com.frogniche.nichesmobs.entity.end_frog.EndFrog;
@@ -127,6 +123,7 @@ public class NichesMobs
         EntityRenderers.register(EntityInit.RUNT.get(), makeRenderer(new RuntModel()));
         EntityRenderers.register(EntityInit.SAW_PAWS.get(), makeRenderer(new SawPawsModel()));
         EntityRenderers.register(EntityInit.BONE_GRUNTER.get(), makeRenderer(new BoneGrunterModel()));
+        EntityRenderers.register(EntityInit.BASTION_CHIEF.get(), makeRenderer(new BastionChiefModel()));
     }
     private void registerEntityAttributes(EntityAttributeCreationEvent event){
         event.put(EntityInit.SNOW_MOLE.get(), EntitySnowMole.createAttributes().build());
@@ -154,6 +151,7 @@ public class NichesMobs
         event.put(EntityInit.RUNT.get(), Runt.createAttributes());
         event.put(EntityInit.SAW_PAWS.get(), SawPaws.createAttributes());
         event.put(EntityInit.BONE_GRUNTER.get(), BoneGrunter.createAttributes());
+        event.put(EntityInit.BASTION_CHIEF.get(), BastionChief.createAttributes());
     }
 
     public static <T extends LivingEntity & IAnimatable> EntityRendererProvider<T> makeRenderer(AnimatedGeoModel<T> model){
